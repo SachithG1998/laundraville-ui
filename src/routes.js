@@ -1,4 +1,4 @@
-const routes = [
+export const routes = [
   {
     id: "home",
     name: "Home",
@@ -25,5 +25,3 @@ const routes = [
     to: "/contact",
   },
 ];
-
-export default routes;
