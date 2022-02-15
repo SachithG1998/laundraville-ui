@@ -8,7 +8,8 @@
 }
 
 .Box a {
-  display: table-cell;
+  display: flex;
+  align-items: center;
   text-align: center;
   vertical-align: middle;
   padding: 10px;
@@ -20,4 +21,9 @@
   background-color: rgb(243, 243, 243);
   color: rgb(107, 107, 107);
   cursor: pointer;
+}
+
+.Box a:visited {
+  text-decoration: none;
+  color: black;
 }
