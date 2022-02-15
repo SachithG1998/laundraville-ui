@@ -1,6 +1,6 @@
 import React from "react";
 
-import PageRouters from "./PageRouters";
+import Layout from "./Layout";
 
 import routes from "../../routes";
 
@@ -9,7 +9,7 @@ import "./index.css";
 export default function Navbar() {
   return (
     <div className="Box">
-      <PageRouters routes={routes} />
+      <Layout routes={routes} />
     </div>
   );
 }
