@@ -25,3 +25,21 @@ export const routes = [
     to: "/contact",
   },
 ];
+
+export const profile = [
+  {
+    id: "login",
+    name: "Log In",
+    loginStatus: false,
+  },
+  {
+    id: "signup",
+    name: "Sign Up",
+    loginStatus: false,
+  },
+  {
+    id: "profile",
+    name: "Profile",
+    loginStatus: true,
+  },
+];
