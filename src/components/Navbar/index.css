@@ -1,20 +1,19 @@
-.Box {
-  background-color: rgb(255, 255, 255);
-  height: 70px;
-  width: 100vw;
-  border: 1px solid rgb(206, 206, 206);
-  border-radius: 10px;
-  justify-content: center;
+.box {
+  height: 90px;
+  width: 90vw;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
   position: fixed;
+  z-index: 5;
 }
 
-.Box nav {
+.box nav {
   display: flex;
   flex-direction: row;
 }
 
-.Box nav a {
+.box nav a {
   color: black;
   display: flex;
   width: 100px;
@@ -25,13 +24,13 @@
   font-size: 20px;
 }
 
-.Box a:hover {
+.box a:hover {
   background-color: rgb(243, 243, 243);
   color: rgb(107, 107, 107);
   cursor: pointer;
 }
 
-.Box a:visited {
+.box a:visited {
   text-decoration: none;
   color: black;
 }

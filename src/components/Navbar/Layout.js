@@ -5,7 +5,9 @@ export default function Layout(props) {
     <>
       <nav>
         {props.routes.map((route) => (
-          <a href={route.to}>{route.name}</a>
+          <a key={route.id} href={route.to}>
+            {route.name}
+          </a>
         ))}
       </nav>
     </>
