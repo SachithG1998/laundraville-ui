@@ -1,4 +1,4 @@
-export const routes = [
+export const pages = [
   {
     id: "home",
     name: "Home",
