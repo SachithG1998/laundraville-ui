@@ -1,8 +1,13 @@
 .glassy {
-  background: rgba(255, 255, 255, 50);
-  height: 80px;
-  border-radius: 5px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.light {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dark {
+  background: rgba(0, 0, 0, 0.5);
 }
