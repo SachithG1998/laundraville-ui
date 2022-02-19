@@ -7,8 +7,8 @@ import { pages } from "../routes";
 
 function Navbar() {
   return (
-    <div className="p-2">
-      <nav className="navbar navbar-expand-lg glassy">
+    <div className="p-3">
+      <nav className="navbar fixed-top navbar-expand-lg glassy light navbar-params">
         <div className="container-fluid">
           <a href="/" className="navbar-brand">
             <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
@@ -28,7 +28,7 @@ function Navbar() {
             <div class="navbar-nav">
               {pages.map((page) => {
                 return (
-                  <a className="nav-link" href={page.to}>
+                  <a className="nav-link nav-link-font" href={page.to}>
                     {page.name}
                   </a>
                 );
