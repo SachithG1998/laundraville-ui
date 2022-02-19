@@ -1,4 +1,13 @@
+.navbar-params {
+  height: 80px;
+}
+
 .navbar-logo {
   width: 30%;
   min-width: 150px;
+}
+
+.nav-link-font-size {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
 }
