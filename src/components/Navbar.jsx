@@ -10,7 +10,7 @@ function Navbar() {
     <div className="p-3">
       <nav className="navbar fixed-top navbar-expand-lg glassy light navbar-params">
         <div className="container-fluid">
-          <a href="/" className="navbar-brand">
+          <a href="/" className="navbar-brand navbar-logo-anchor">
             <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
           </a>
           <button
@@ -25,7 +25,7 @@ function Navbar() {
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav center">
               {pages.map((page) => {
                 return (
                   <a className="nav-link nav-link-font" href={page.to}>
