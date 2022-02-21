@@ -2,6 +2,15 @@ body {
   font-family: "Playfair Display", serif !important;
 }
 
+h1 {
+  font-size: 30px !important;
+}
+
+p {
+  font-size: 13.5px;
+  font-weight: lighter !important;
+}
+
 .App {
   text-align: center;
 }
