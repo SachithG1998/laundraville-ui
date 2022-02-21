@@ -5,15 +5,19 @@ import Card from "../components/Card";
 
 import "./Home.css";
 
+import { introCardData } from "./data";
+
 function Home() {
   return (
     <>
-      <div className="vh-100">
-        <img
-          src={Cover}
-          alt="Folded Laundry Cover Image"
-          className="img-fluid"
-        />
+      <div className="cover-area">
+        <img src={Cover} alt="Folded Laundry" className="img-fluid" />
+        <div className="intro-card">
+          <Card
+            cardTitle={introCardData[0].title}
+            cardText={introCardData[0].text}
+          />
+        </div>
       </div>
     </>
   );
