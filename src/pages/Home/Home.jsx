@@ -1,7 +1,7 @@
 import React from "react";
 
-import Cover from "../assets/images/laundry.png";
-import Card from "../components/Card";
+import Cover from "../../assets/images/laundry.png";
+import Card from "../../components/Card";
 
 import "./Home.css";
 
@@ -21,12 +21,7 @@ function Home() {
         </div>
       </div>
 
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <div className="container-fluid test">
+      <div className="pt-5 mt-5">
         <div className="row gy-5">
           <div className="col-12 col-md-6 col-lg-4">
             <Card
