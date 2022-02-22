@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
 
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home/Home";
-import About from "./pages/About";
+import Home from "./pages/home/Home";
+import About from "./pages/about/About";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
