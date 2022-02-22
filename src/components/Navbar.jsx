@@ -28,7 +28,11 @@ function Navbar() {
             <div class="navbar-nav center">
               {pages.map((page) => {
                 return (
-                  <a className="nav-link nav-link-font" href={page.to}>
+                  <a
+                    className="nav-link nav-link-font"
+                    href={page.to}
+                    key={page.id}
+                  >
                     {page.name}
                   </a>
                 );
