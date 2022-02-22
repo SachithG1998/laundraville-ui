@@ -21,7 +21,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="pt-5 mt-5">
+      <div className="py-5 px-3">
         <div className="row gy-5">
           <div className="col-12 col-md-6 col-lg-4">
             <Card
