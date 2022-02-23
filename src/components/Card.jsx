@@ -1,8 +1,10 @@
 import React from "react";
 
-function Card({ cardImage, cardTitle, cardText, cardButton }) {
+function Card({ cardImage, cardTitle, cardText, cardButton, cardStyle }) {
   return (
-    <div className="card card-layout glassy dark rounded-corners">
+    <div
+      className={`card card-layout glassy dark rounded-corners ${cardStyle}`}
+    >
       {typeof cardImage !== "undefined" ? (
         <img
           src={cardImage.src}
