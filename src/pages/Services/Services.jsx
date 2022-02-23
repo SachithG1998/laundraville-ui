@@ -6,5 +6,8 @@ import "./Services.css";
 
 import { serviceCardData } from "./servicedata";
 
-function Services()
+function Services() {
+  return <div></div>;
+}
 
+export default Services;
