@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 
 import "./Services.css";
 
-import { serviceCardData1 } from "./servicedata";
+import { serviceCardData1 ,serviceCardData2 } from "./servicedata";
 
 function Services()
 {
@@ -15,6 +15,13 @@ function Services()
             <Card
               cardTitle={serviceCardData1.title}
               cardText={serviceCardData1.text}
+            />
+          </div>
+
+          <div className="container service2  ">
+            <Card
+              cardTitle={serviceCardData2.title}
+              cardText={serviceCardData2.text}
             />
           </div>
           </div>

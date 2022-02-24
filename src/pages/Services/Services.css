@@ -1,6 +1,15 @@
 .service1 {
-  max-width: 50%;
+  max-width: 48%;
+  max-height: 50%;
   position: absolute;
   top: 20%;
   left: 2%;
+}
+
+.service2 {
+  max-width: 48%;
+  max-height: 25%;
+  position: absolute;
+  top: 20%;
+  left: 52%;
 }
