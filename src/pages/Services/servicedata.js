@@ -5,5 +5,10 @@ export const serviceCardData1 = {
   
 export const serviceCardData2 = {
   title: "Ironing",
-  text: "Paragraph about washing",
+  text: "Paragraph about ironing",
+};
+
+export const serviceCardData3 = {
+  title: "Dry Cleaning",
+  text: "Paragraph about dry cleaning",
 };
