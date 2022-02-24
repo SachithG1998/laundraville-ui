@@ -22,10 +22,3 @@ function Services()
   );
   }
   export default Services;
-=======
-function Services() {
-  return <div></div>;
-}
-
-export default Services;
->>>>>>> 4a0d8a430617bc76275498ed456e78b84f7c111e
