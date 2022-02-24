@@ -14,7 +14,7 @@ function Home() {
         <img src={Cover} alt="Folded Laundry" className="img-fluid" />
 
         {/* Recheck this in spare time */}
-        <div className="container intro-card text-white">
+        <div className="container intro-card text-white" data-aos="fade-right">
           <Card
             cardTitle={introCardData.title}
             cardText={introCardData.text}
@@ -31,6 +31,7 @@ function Home() {
                 cardImage={infoCard.image}
                 cardTitle={infoCard.title}
                 cardText={infoCard.text}
+                cardAnimationDelay={infoCard.animationDelay}
                 cardStyle="h-100"
               />
             </div>
