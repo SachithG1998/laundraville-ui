@@ -1,14 +1,17 @@
 import React from "react";
 
-function Card({ cardImage, cardTitle, cardText, cardButton, cardStyle }) {
+function Card(props) {
   return (
     <div
-      className={`card card-layout glassy dark rounded-corners ${cardStyle}`}
+      className={`card card-layout glassy dark rounded-corners ${props.cardStyle}`}
+      data-aos="fade-down"
+      data-aos-delay={props.cardAnimationDelay}
+      data-aos-duration="1000"
     >
-      {typeof cardImage !== "undefined" ? (
+      {typeof props.cardImage !== "undefined" ? (
         <img
-          src={cardImage.src}
-          alt={cardImage.alt}
+          src={props.cardImage.src}
+          alt={props.cardImage.alt}
           className="card-image-top"
         />
       ) : (
@@ -16,11 +19,26 @@ function Card({ cardImage, cardTitle, cardText, cardButton, cardStyle }) {
       )}
 
       <div className="card-body">
-        <h1 className="card-title">{cardTitle}</h1>
-        <p className="card-text">{cardText}</p>
-        {typeof cardButton !== "undefined" ? (
-          <a href={cardButton.to} className="btn btn-primary">
-            {cardButton.name}
+        <h1
+          className="card-title"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+        >
+          {props.cardTitle}
+        </h1>
+
+        <p
+          className="card-text"
+          data-aos="fade-right"
+          data-aos-delay="100"
+          data-aos-duration="2000"
+        >
+          {props.cardText}
+        </p>
+
+        {typeof props.cardButton !== "undefined" ? (
+          <a href={props.cardButton.to} className="btn btn-primary">
+            {props.cardButton.name}
           </a>
         ) : (
           <></>
