@@ -10,8 +10,8 @@ function Services()
 {
   return (
       <>
-        <div className="row">
-          <div className="col-sm-6 ">
+        <div className="container">
+          <div className="container service1 ">
             <Card
               cardTitle={serviceCardData1.title}
               cardText={serviceCardData1.text}
