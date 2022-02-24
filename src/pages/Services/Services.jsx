@@ -6,7 +6,6 @@ import "./Services.css";
 
 import { serviceCardData1 } from "./servicedata";
 
-<<<<<<< HEAD
 function Services()
 {
   return (
