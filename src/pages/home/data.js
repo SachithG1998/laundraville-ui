@@ -2,6 +2,8 @@ import card1 from "../../assets/images/home/Washing Clothes.png";
 import card2 from "../../assets/images/home/Drying Clothes.png";
 import card3 from "../../assets/images/home/Ironing Clothes.png";
 
+const baseTimeForDelay = 500;
+
 export const introCardData = {
   title: "Welcome to Laundraville!",
   text: "A place where trust is more than just words. Rejuvanating your fasionable clothes and more has never been this breathtaking.",
@@ -25,6 +27,7 @@ export const infoCardsData = [
     },
     title: "Efficient",
     text: "Our staff is always hands-on ready to give you the best service as efficiently as possible. We believe efficiency has direct proportinality to your valuable trust.",
+    animationDelay: baseTimeForDelay,
   },
   {
     id: 2,
@@ -39,6 +42,7 @@ export const infoCardsData = [
     },
     title: "Love and Care",
     text: "We make infinity percent sure that your laundry receive the love and care that you would show them.",
+    animationDelay: baseTimeForDelay * 2,
   },
   {
     id: 3,
@@ -53,5 +57,6 @@ export const infoCardsData = [
     },
     title: "We have Chemistry with Laundry",
     text: "We just haven't told people yet but here's a secret...your laundry and us are seeing each other. I think we have enough chemistry to make it work.",
+    animationDelay: baseTimeForDelay * 3,
   },
 ];
