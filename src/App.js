@@ -5,6 +5,7 @@ import "./common/styles.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
+import Footer from "./components/Footer";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Services from "./pages/Services/Services";
@@ -20,6 +21,7 @@ function App() {
           <Route path="/services" element={<Services />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }

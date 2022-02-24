@@ -3,12 +3,12 @@ body {
 }
 
 h1 {
-  font-size: 30px !important;
+  font-size: 25px !important;
 }
 
 p {
-  font-size: 13.5px;
-  font-weight: lighter !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
 }
 
 .App {
