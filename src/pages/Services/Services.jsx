@@ -4,10 +4,28 @@ import Card from "../../components/card/Card";
 
 import "./Services.css";
 
-import { serviceCardData } from "./servicedata";
+import { serviceCardData1 ,serviceCardData2 } from "./servicedata";
 
-function Services() {
-  return <div></div>;
-}
+function Services()
+{
+  return (
+      <>
+        <div className="container">
+          <div className="container service1 ">
+            <Card
+              cardTitle={serviceCardData1.title}
+              cardText={serviceCardData1.text}
+            />
+          </div>
 
-export default Services;
+          <div className="container service2  ">
+            <Card
+              cardTitle={serviceCardData2.title}
+              cardText={serviceCardData2.text}
+            />
+          </div>
+          </div>
+          </>
+  );
+  }
+  export default Services;
