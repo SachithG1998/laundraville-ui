@@ -1,7 +1,7 @@
 import React from "react";
 
 import Cover from "../../assets/images/home/laundry.png";
-import Card from "../../components/Card";
+import Card from "../../components/card/Card";
 
 import "./Home.css";
 
