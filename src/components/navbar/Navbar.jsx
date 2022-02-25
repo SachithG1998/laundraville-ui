@@ -2,8 +2,8 @@ import React from "react";
 
 import "./Navbar.css";
 
-import Logo from "../assets/images/Logo.png";
-import { pages } from "../routes";
+import Logo from "../../assets/images/Logo.png";
+import { pages } from "../../routes";
 
 function Navbar() {
   return (

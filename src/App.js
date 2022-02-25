@@ -1,14 +1,18 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Services from "./pages/Services/Services";
+
+AOS.init();
 
 function App() {
   return (
