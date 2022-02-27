@@ -14,11 +14,12 @@ function Home() {
         <img src={Cover} alt="Folded Laundry" className="img-fluid" />
 
         {/* Recheck this in spare time */}
-        <div className="container intro-card text-white" data-aos="fade-right">
+        <div className="container intro-card text-white">
           <Card
             cardTitle={introCardData.title}
             cardText={introCardData.text}
             cardButton={introCardData.button}
+            dataAos={"fade-right"}
           />
         </div>
       </div>
@@ -31,8 +32,10 @@ function Home() {
                 cardImage={infoCard.image}
                 cardTitle={infoCard.title}
                 cardText={infoCard.text}
-                cardAnimationDelay={infoCard.animationDelay}
                 cardStyle="h-100"
+                dataAos="fade-down"
+                dataAosDuration="1000"
+                dataAosDelay={infoCard.animationDelay}
               />
             </div>
           );
