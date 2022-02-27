@@ -4,9 +4,9 @@ function Card(props) {
   return (
     <div
       className={`card card-layout glassy dark rounded-corners ${props.cardStyle}`}
-      data-aos="fade-down"
-      data-aos-delay={props.cardAnimationDelay}
-      data-aos-duration="1000"
+      data-aos={props.dataAos}
+      data-aos-duration={props.dataAosDuration}
+      data-aos-delay={props.dataAosDelay}
     >
       {typeof props.cardImage !== "undefined" ? (
         <img
