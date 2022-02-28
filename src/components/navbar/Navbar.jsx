@@ -7,41 +7,39 @@ import { pages } from "../../routes";
 
 function Navbar() {
   return (
-    <div className="p-3">
-      <nav className="navbar fixed-top navbar-expand-lg glassy light navbar-params">
-        <div className="container-fluid">
-          <a href="/" className="navbar-brand navbar-logo-anchor">
-            <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav center">
-              {pages.map((page) => {
-                return (
-                  <a
-                    className="nav-link nav-link-font"
-                    href={page.to}
-                    key={page.id}
-                  >
-                    {page.name}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+    <nav class="navbar navbar-expand-lg fixed-top glassy light">
+      <div class="container-fluid">
+        <a class="navbar-brand navbar-logo-anchor" href="/">
+          <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapsibleContent"
+          aria-controls="navbarCollapsibleContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapsibleContent">
+          {pages.map((page) => {
+            return (
+              <div className="nav-item">
+                <a
+                  className="nav-link nav-link-font"
+                  href={page.to}
+                  key={page.id}
+                >
+                  {page.name}
+                </a>
+              </div>
+            );
+          })}
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
 
