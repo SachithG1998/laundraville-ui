@@ -19,7 +19,7 @@ function Home() {
             cardTitle={introCardData.title}
             cardText={introCardData.text}
             cardButton={introCardData.button}
-            dataAos={"fade-right"}
+            dataAos="fade-right"
           />
         </div>
       </div>
