@@ -37,7 +37,12 @@ function Card(props) {
         </p>
 
         {typeof props.cardButton !== "undefined" ? (
-          <a href={props.cardButton.to} className="btn btn-primary">
+          <a
+            href={props.cardButton.to}
+            className="btn btn-primary"
+            data-aos="fade-in"
+            data-aos-duration="2000"
+          >
             {props.cardButton.name}
           </a>
         ) : (
