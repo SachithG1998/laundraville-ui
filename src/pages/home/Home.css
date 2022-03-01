@@ -1,13 +1,22 @@
-.cover-area {
-  padding: 0 0;
-  position: relative;
+.intro-card {
+  max-width: 90vw;
+  position: absolute;
+  overflow: hidden;
+  top: 40%;
+  z-index: 1000;
 }
 
-.intro-card {
-  max-width: 440px;
-  position: absolute;
-  top: 40%;
-  left: 5%;
+@media only screen and (min-width: 576px) {
+  .intro-card {
+    max-width: 75vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .intro-card {
+    max-width: 440px;
+    left: 5%;
+  }
 }
 
 .intro-card p {
