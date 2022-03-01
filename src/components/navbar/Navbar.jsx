@@ -24,7 +24,7 @@ function Navbar() {
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapsibleContent">
-          <div className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+          <div className="navbar-nav ms-3 me-auto my-2 my-lg-0 navbar-nav-scroll">
             {pages.map((page) => {
               return (
                 <div className="nav-item">
