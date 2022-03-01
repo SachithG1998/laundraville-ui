@@ -17,15 +17,23 @@ AOS.init();
 function App() {
   return (
     <>
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-        </Routes>
-      </BrowserRouter>
-      <Footer />
+      <div className="container-fluid">
+        <div className="row position-relative">
+          <Navbar />
+        </div>
+        <div className="row position-relative">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+        <div className="row position-relative">
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }
