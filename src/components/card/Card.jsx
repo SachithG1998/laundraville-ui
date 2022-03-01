@@ -19,13 +19,13 @@ function Card(props) {
       )}
 
       <div className="card-body">
-        <h1
+        <h5
           className="card-title"
           data-aos="fade-right"
           data-aos-duration="2000"
         >
           {props.cardTitle}
-        </h1>
+        </h5>
 
         <p
           className="card-text"
