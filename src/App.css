@@ -2,13 +2,8 @@ body {
   font-family: "Playfair Display", serif !important;
 }
 
-h1 {
-  font-size: 25px !important;
-}
-
 p {
   font-family: "Open Sans", sans-serif;
-  font-size: 14px;
 }
 
 .App {
