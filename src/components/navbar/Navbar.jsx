@@ -1,5 +1,7 @@
 import React from "react";
 
+import Basket from "./components/Basket";
+
 import "./Navbar.css";
 
 import Logo from "../../assets/images/Logo.png";
@@ -13,7 +15,7 @@ function Navbar() {
           <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
         </a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler navbar-right"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapsibleContent"
@@ -39,6 +41,8 @@ function Navbar() {
               );
             })}
           </div>
+
+          <Basket />
         </div>
       </div>
     </nav>
