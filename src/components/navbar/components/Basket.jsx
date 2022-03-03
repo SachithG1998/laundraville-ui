@@ -7,7 +7,7 @@ class Basket extends Component {
     super(props);
 
     this.state = {
-      basketItemCount: 3,
+      basketItemCount: 0,
     };
   }
 
