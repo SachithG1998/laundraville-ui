@@ -7,7 +7,7 @@ class Basket extends Component {
     super(props);
 
     this.state = {
-      basketItemCount: 0,
+      basketItemCount: 3,
     };
   }
 
@@ -30,7 +30,7 @@ class Basket extends Component {
             {this.state.basketItemCount > 0 ? (
               <span
                 id="basket-badge"
-                class="position-absolute translate-middle badge rounded-pill bg-danger"
+                class="position-absolute translate-middle badge rounded-pill bg-primary"
               >
                 {this.formatBasketItemCount()}
                 <span class="visually-hidden">unread messages</span>
