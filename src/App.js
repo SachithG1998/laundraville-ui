@@ -10,7 +10,7 @@ import About from "./pages/about/About";
 import Footer from "./components/footer/Footer";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Services from "./pages/Services/Services";
+import Services from "./pages/services/Services";
 
 AOS.init();
 
