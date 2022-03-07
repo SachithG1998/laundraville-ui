@@ -44,7 +44,7 @@ function Footer() {
                     <p>Subscribe to our Newsletter</p>
                   </label>
                 </div>
-                <div className="col-12 col-md-5 col-lg-5 px-sm-3">
+                <div className="col-12 col-md-6 col-lg-5 px-sm-3">
                   <input
                     type="email"
                     className="form-control"
