@@ -64,6 +64,6 @@ export const Servicecard = [
     },
     title: "Mending",
     text: "We just haven't told people yet but here's a secret...your laundry and us are seeing each other. I think we have enough chemistry to make it work.",
-    animationDelay: baseTimeForDelay * 4,
+    animationDelay: baseTimeForDelay * 3,
   },
 ];
