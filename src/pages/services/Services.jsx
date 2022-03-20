@@ -8,7 +8,7 @@ import Scard from "./scard";
 function Services() {
   return (
     <>
-      <Scard/>
+      <Scard />
     </>
   );
 }
