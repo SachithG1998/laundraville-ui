@@ -1,6 +1,7 @@
 import React from "react";
 
 import Basket from "./Basket";
+import CustomerEntry from "./CustomerEntry";
 
 import { pages } from "../../../routes";
 
@@ -35,6 +36,7 @@ function Navlinks() {
           })}
         </div>
 
+        <CustomerEntry />
         <Basket />
       </div>
     </>
