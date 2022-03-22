@@ -24,22 +24,20 @@ class Basket extends Component {
 
   render() {
     return (
-      <div className="navbar-right">
-        <div className="p-4">
-          <i class="position-relative fa-solid fa-basket-shopping fa-2xl">
-            {this.state.basketItemCount > 0 ? (
-              <span
-                id="basket-badge"
-                class="position-absolute translate-middle badge rounded-pill bg-primary"
-              >
-                {this.formatBasketItemCount()}
-                <span class="visually-hidden">unread messages</span>
-              </span>
-            ) : (
-              <></>
-            )}
-          </i>
-        </div>
+      <div className="p-4">
+        <i class="position-relative fa-solid fa-basket-shopping fa-2xl">
+          {this.state.basketItemCount > 0 ? (
+            <span
+              id="basket-badge"
+              class="position-absolute translate-middle badge rounded-pill bg-primary"
+            >
+              {this.formatBasketItemCount()}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          ) : (
+            <></>
+          )}
+        </i>
       </div>
     );
   }
