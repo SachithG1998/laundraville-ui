@@ -143,7 +143,6 @@ function SignUp() {
             <div className="form-row-last">
               <button
                 type="submit"
-                onClick={validateForm}
                 name="register"
                 className="btn btn-primary mb-3"
               >
