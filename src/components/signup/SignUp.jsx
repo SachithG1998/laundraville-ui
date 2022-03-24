@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Joi, { string } from "joi";
 
 import "./SignUp.css";
+
+const axios = require("axios").default;
 
 function SignUp() {
   return (
     <div className="page-content my-5">
       <div className="form-v10-content">
-        <form
-          className="form-detail"
-          action="#"
-          method="post"
-          id="registerCustomerForm"
-        >
+        <form className="form-detail" id="registerCustomerForm">
           <div className="form-left glassy light">
             <h2 className="text-primary">General Infomation</h2>
             <div className="form-group">
@@ -22,7 +20,6 @@ function SignUp() {
                   id="firstName"
                   className="input-text"
                   placeholder="First Name"
-                  required
                 />
               </div>
               <div className="form-row form-row-2">
@@ -32,7 +29,6 @@ function SignUp() {
                   id="lastName"
                   className="input-text"
                   placeholder="Last Name"
-                  required
                 />
               </div>
             </div>
@@ -43,7 +39,6 @@ function SignUp() {
                 className="input-text"
                 id="dob"
                 placeholder="DOB"
-                required
               />
             </div>
             <h2 className="text-primary">Login Details</h2>
@@ -54,7 +49,6 @@ function SignUp() {
                 id="username"
                 className="input-text"
                 placeholder="Username"
-                required
               />
             </div>
             <div className="form-group">
@@ -65,7 +59,6 @@ function SignUp() {
                   id="password"
                   className="input-text"
                   placeholder="Password"
-                  required
                 />
               </div>
               <div className="form-row form-row-2">
@@ -75,7 +68,6 @@ function SignUp() {
                   id="confirmPassword"
                   className="input-text"
                   placeholder="Confirm Password"
-                  required
                 />
               </div>
             </div>
@@ -85,18 +77,18 @@ function SignUp() {
             <div className="form-row">
               <input
                 type="text"
-                name="addLine1"
-                className="addLine1"
-                id="addLine1"
+                name="addressLine1"
+                className="addressLine1"
+                id="addressLine1"
                 placeholder="Address Line 1"
               />
             </div>
             <div className="form-row">
               <input
                 type="text"
-                name="addLine2"
-                className="addLine2"
-                id="addLine2"
+                name="addressLine2"
+                className="addressLine2"
+                id="addressLine2"
                 placeholder="Address Line 2"
               />
             </div>
@@ -104,10 +96,10 @@ function SignUp() {
               <div className="form-row form-row-1">
                 <input
                   type="text"
-                  name="city"
-                  className="city"
-                  id="city"
-                  placeholder="City"
+                  name="postalCity"
+                  className="postalCity"
+                  id="postalCity"
+                  placeholder="Postal City"
                 />
               </div>
               <div className="form-row form-row-2">
@@ -127,7 +119,6 @@ function SignUp() {
                 className="phone"
                 id="phone"
                 placeholder="Phone Number"
-                required
               />
             </div>
             <div className="form-row">
@@ -137,7 +128,6 @@ function SignUp() {
                 id="yourEmail"
                 className="input-text"
                 placeholder="Your Email"
-                required
               />
             </div>
             <div className="form-checkbox">
@@ -153,6 +143,7 @@ function SignUp() {
             <div className="form-row-last">
               <button
                 type="submit"
+                onClick={validateForm}
                 name="register"
                 className="btn btn-primary mb-3"
               >
