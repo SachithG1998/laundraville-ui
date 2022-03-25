@@ -1,15 +1,94 @@
 import React, { useState } from "react";
-import Joi, { string } from "joi";
+import Joi from "joi";
+import moment from "moment";
+
+import { toast } from "react-toastify";
 
 import "./SignUp.css";
 
 const axios = require("axios").default;
 
 function SignUp() {
+  /* Defining a customer state and setCustomer hook*/
+  const [customer, setCustomer] = useState({
+    firstName: "",
+    lastName: "",
+    dob: "",
+    addressLine1: "",
+    addressLine2: "",
+    postalCity: "",
+    district: "",
+    phone: "",
+    cusEmail: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  let date = moment();
+  date = date.subtract(18, "y").format("MM/DD/YYYY");
+
+  const validationSchema = Joi.object({
+    firstName: Joi.string().min(2).required(),
+    lastName: Joi.string().optional().allow("").min(2),
+    dob: Joi.date().max(date).required(),
+    addressLine1: Joi.string().optional().allow(""),
+    addressLine2: Joi.string().optional().allow(""),
+    postalCity: Joi.string().optional().allow(""),
+    district: Joi.string().optional().allow(""),
+    phone: Joi.number().required(),
+    cusEmail: Joi.string().required(),
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+    confirmPassword: Joi.ref("password"),
+  });
+
+  /* Manually update input value */
+  const handleInputValues = (event) => {
+    const target = event.target;
+
+    const name = target.name;
+    const value = target.value;
+
+    setCustomer((prevState) => {
+      return { ...prevState, ...{ [name]: value } };
+    });
+  };
+
+  /* Validates input values with comparison to the Joi validation schema */
+  const validateForm = () => {
+    const result = validationSchema.validate(customer);
+
+    console.log(result);
+
+    const { error } = result;
+
+    toast.error(error.toString(), {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  /* Function to handle on submit event */
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+
+    validateForm();
+  };
+
   return (
     <div className="page-content my-5">
       <div className="form-v10-content">
-        <form className="form-detail" id="registerCustomerForm">
+        <form
+          className="form-detail"
+          id="registerCustomerForm"
+          onSubmit={onSubmitHandler}
+        >
           <div className="form-left glassy light">
             <h2 className="text-primary">General Infomation</h2>
             <div className="form-group">
@@ -20,6 +99,8 @@ function SignUp() {
                   id="firstName"
                   className="input-text"
                   placeholder="First Name"
+                  value={customer.firstName}
+                  onChange={handleInputValues}
                 />
               </div>
               <div className="form-row form-row-2">
@@ -29,6 +110,8 @@ function SignUp() {
                   id="lastName"
                   className="input-text"
                   placeholder="Last Name"
+                  value={customer.lastName}
+                  onChange={handleInputValues}
                 />
               </div>
             </div>
@@ -39,6 +122,8 @@ function SignUp() {
                 className="input-text"
                 id="dob"
                 placeholder="DOB"
+                value={customer.dob}
+                onChange={handleInputValues}
               />
             </div>
             <h2 className="text-primary">Login Details</h2>
@@ -49,6 +134,8 @@ function SignUp() {
                 id="username"
                 className="input-text"
                 placeholder="Username"
+                value={customer.username}
+                onChange={handleInputValues}
               />
             </div>
             <div className="form-group">
@@ -59,6 +146,8 @@ function SignUp() {
                   id="password"
                   className="input-text"
                   placeholder="Password"
+                  value={customer.password}
+                  onChange={handleInputValues}
                 />
               </div>
               <div className="form-row form-row-2">
@@ -68,6 +157,8 @@ function SignUp() {
                   id="confirmPassword"
                   className="input-text"
                   placeholder="Confirm Password"
+                  value={customer.confirmPassword}
+                  onChange={handleInputValues}
                 />
               </div>
             </div>
@@ -81,6 +172,8 @@ function SignUp() {
                 className="addressLine1"
                 id="addressLine1"
                 placeholder="Address Line 1"
+                value={customer.addressLine1}
+                onChange={handleInputValues}
               />
             </div>
             <div className="form-row">
@@ -90,6 +183,8 @@ function SignUp() {
                 className="addressLine2"
                 id="addressLine2"
                 placeholder="Address Line 2"
+                value={customer.addressLine2}
+                onChange={handleInputValues}
               />
             </div>
             <div className="form-group">
@@ -100,6 +195,8 @@ function SignUp() {
                   className="postalCity"
                   id="postalCity"
                   placeholder="Postal City"
+                  value={customer.postalCity}
+                  onChange={handleInputValues}
                 />
               </div>
               <div className="form-row form-row-2">
@@ -109,6 +206,8 @@ function SignUp() {
                   className="district"
                   id="district"
                   placeholder="District"
+                  value={customer.district}
+                  onChange={handleInputValues}
                 />
               </div>
             </div>
@@ -119,15 +218,19 @@ function SignUp() {
                 className="phone"
                 id="phone"
                 placeholder="Phone Number"
+                value={customer.phone}
+                onChange={handleInputValues}
               />
             </div>
             <div className="form-row">
               <input
                 type="email"
-                name="yourEmail"
-                id="yourEmail"
+                name="cusEmail"
+                id="cusEmail"
                 className="input-text"
                 placeholder="Your Email"
+                value={customer.email}
+                onChange={handleInputValues}
               />
             </div>
             <div className="form-checkbox">
