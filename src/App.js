@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
@@ -10,9 +10,12 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Signup from "./pages/signup/SignUp";
+import Services from "./pages/services/Services";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Services from "./pages/services/Services";
+import { ToastContainer } from "react-toastify";
+
+import AOS from "aos";
 
 AOS.init();
 
@@ -31,6 +34,18 @@ function App() {
       </BrowserRouter>
 
       <Footer />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }
