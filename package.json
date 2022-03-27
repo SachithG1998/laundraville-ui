@@ -21,8 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,12 +44,12 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "dotenv-webpack": "^7.1.0"
-  },
   "react-dotenv": {
     "whitelist": [
       "LAUNDRAVILLE_UI_API_URL"
     ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.4"
   }
 }
