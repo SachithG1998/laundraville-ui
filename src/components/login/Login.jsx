@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/customer`,
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}`,
 });
 
 function Login() {
@@ -61,7 +61,7 @@ function Login() {
 
   const loginCustomer = async () => {
     await api
-      .get("/login", login)
+      .get("/customer/login", login)
       .then((res) => {
         const { status, data } = res;
 
