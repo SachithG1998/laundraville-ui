@@ -92,6 +92,23 @@ function SignUp() {
     }
   };
 
+  const clearRegisterForm = () => {
+    setCustomer({
+      firstName: "",
+      lastName: "",
+      dob: "",
+      addressLine1: "",
+      addressLine2: "",
+      postalCity: "",
+      district: "",
+      phone: "",
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
   const registerCustomer = async () => {
     await api
       .post("/customers/register", customer)
@@ -108,6 +125,8 @@ function SignUp() {
             draggable: true,
             progress: undefined,
           });
+
+          clearRegisterForm();
         }
       })
       .catch((error) => console.log(error));
