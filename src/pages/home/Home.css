@@ -1,8 +1,15 @@
-.Servicecard {
+.cover-area {
+  padding: 0 0;
+  position: relative;
+}
+
+.intro-card {
+  max-width: 440px;
   max-width: 90vw;
   position: absolute;
   overflow: hidden;
   top: 40%;
+  left: 5%;
   z-index: 1000;
 }
 
