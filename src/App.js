@@ -1,39 +1,50 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "./components/navbar/Navbar";
-import Home from "./pages/home/Home";
-import About from "./pages/about/About";
 import Footer from "./components/footer/Footer";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import About from "./pages/about/About";
+import Signup from "./pages/signup/SignUp";
 import Services from "./pages/services/Services";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import AOS from "aos";
 
 AOS.init();
 
 function App() {
   return (
     <>
-      <div className="container-fluid">
-        <div className="row position-relative">
-          <Navbar />
-        </div>
-        <div className="row position-relative">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-        <div className="row position-relative">
-          <Footer />
-        </div>
-      </div>
+      <Navbar />
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </BrowserRouter>
+
+      <Footer />
+
+      <ToastContainer
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }

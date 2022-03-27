@@ -52,9 +52,7 @@ function Footer() {
                   />
                 </div>
                 <div className="col-12 col-md-3 py-3 py-md-0">
-                  <button type="submit" className="btn btn-primary ">
-                    Subsribe
-                  </button>
+                  <button className="btn btn-primary ">Subsribe</button>
                 </div>
               </div>
             </form>
