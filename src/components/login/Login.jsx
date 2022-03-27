@@ -1,9 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
+import Joi from "joi";
+
+import { toast } from "react-toastify";
+
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/customer`,
+});
 
 function Login() {
-  const handleInputValues = () => {};
+  /* Defining login state and setLogin hook */
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
 
-  const onSubmitHandler = () => {};
+  /* Validation schema for signup form */
+  const validationSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().min(8).max(16).required(),
+  });
+
+  /* Manually update input value */
+  const handleInputValues = (event) => {
+    const target = event.target;
+
+    const name = target.name;
+    let value = target.value;
+
+    setLogin((prevState) => {
+      return { ...prevState, ...{ [name]: value } };
+    });
+  };
+
+  /* Validate input in comparison with the validation schema */
+  const validateForm = () => {
+    const result = validationSchema.validate(login);
+
+    console.log(result);
+
+    const { error } = result;
+
+    if (error) {
+      toast.error(error.toString(), {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const loginCustomer = async () => {
+    await api
+      .get("/login", login)
+      .then((res) => {
+        const { status, data } = res;
+
+        console.log(res);
+
+        if (status === 200) {
+          toast.success(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+
+    if (validateForm()) {
+      loginCustomer();
+    }
+  };
 
   return (
     <div className="page-content my-5">
@@ -22,7 +107,7 @@ function Login() {
                 id="username"
                 className="input-text"
                 placeholder="Username"
-                // value={customer.username}
+                value={login.username}
                 onChange={handleInputValues}
               />
             </div>
@@ -33,7 +118,7 @@ function Login() {
                 id="password"
                 className="input-text"
                 placeholder="Password"
-                //   value={customer.password}
+                value={login.password}
                 onChange={handleInputValues}
               />
             </div>
