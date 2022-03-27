@@ -47,7 +47,6 @@ function Login() {
               </button>
             </div>
           </div>
-          <div className="form-right glassy dark"></div>
         </form>
       </div>
     </div>
