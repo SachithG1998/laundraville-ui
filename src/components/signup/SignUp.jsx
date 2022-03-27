@@ -9,7 +9,7 @@ import "./SignUp.css";
 const axios = require("axios").default;
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}`,
 });
 
 function SignUp() {
@@ -111,7 +111,7 @@ function SignUp() {
 
   const registerCustomer = async () => {
     await api
-      .post("/customers/register", customer)
+      .post("/customer/register", customer)
       .then((res) => {
         const { status, data } = res;
 
