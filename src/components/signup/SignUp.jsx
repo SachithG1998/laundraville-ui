@@ -92,7 +92,7 @@ function SignUp() {
     }
   };
 
-  const clearRegisterForm = () => {
+  const resetRegisterForm = () => {
     setCustomer({
       firstName: "",
       lastName: "",
@@ -126,7 +126,7 @@ function SignUp() {
             progress: undefined,
           });
 
-          clearRegisterForm();
+          resetRegisterForm();
         }
       })
       .catch((error) => console.log(error));
