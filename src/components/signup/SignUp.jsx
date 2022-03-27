@@ -8,6 +8,10 @@ import "./SignUp.css";
 
 const axios = require("axios").default;
 
+const api = axios.create({
+  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
+});
+
 function SignUp() {
   /* Defining a customer state and setCustomer hook*/
   const [customer, setCustomer] = useState({
@@ -19,15 +23,17 @@ function SignUp() {
     postalCity: "",
     district: "",
     phone: "",
-    cusEmail: "",
+    email: "",
     username: "",
     password: "",
     confirmPassword: "",
   });
 
+  /* Formatting current date to match date picker format */
   let date = moment();
   date = date.subtract(18, "y").format("MM/DD/YYYY");
 
+  /* Validation schema for signup form */
   const validationSchema = Joi.object({
     firstName: Joi.string().min(2).required(),
     lastName: Joi.string().optional().allow("").min(2),
@@ -37,9 +43,9 @@ function SignUp() {
     postalCity: Joi.string().optional().allow(""),
     district: Joi.string().optional().allow(""),
     phone: Joi.number().required(),
-    cusEmail: Joi.string().required(),
+    email: Joi.string().required(),
     username: Joi.string().required(),
-    password: Joi.string().required(),
+    password: Joi.string().min(8).max(16).required(),
     confirmPassword: Joi.ref("password"),
   });
 
@@ -48,7 +54,13 @@ function SignUp() {
     const target = event.target;
 
     const name = target.name;
-    const value = target.value;
+    let value = target.value;
+
+    // formatting if dob field is recieved
+    if (name === "dob") {
+      value = moment(value).format("YYYY-MM-DD");
+      console.log(value);
+    }
 
     setCustomer((prevState) => {
       return { ...prevState, ...{ [name]: value } };
@@ -63,22 +75,51 @@ function SignUp() {
 
     const { error } = result;
 
-    toast.error(error.toString(), {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    if (error) {
+      toast.error(error.toString(), {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const registerCustomer = async () => {
+    await api
+      .post("/customers/register", customer)
+      .then((res) => {
+        const { status, data } = res;
+
+        if (status === 200) {
+          toast.success(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   /* Function to handle on submit event */
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    validateForm();
+    if (validateForm()) {
+      registerCustomer();
+    }
   };
 
   return (
@@ -225,8 +266,8 @@ function SignUp() {
             <div className="form-row">
               <input
                 type="email"
-                name="cusEmail"
-                id="cusEmail"
+                name="email"
+                id="email"
                 className="input-text"
                 placeholder="Your Email"
                 value={customer.email}
