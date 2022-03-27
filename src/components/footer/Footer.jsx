@@ -11,7 +11,12 @@ function Footer() {
           {socials.map((social) => {
             return (
               <div className="px-2">
-                <a key={social.id} href={social.url} target="_blank">
+                <a
+                  key={social.id}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i class={`${social.icon} fa-lg`} />
                 </a>
               </div>
