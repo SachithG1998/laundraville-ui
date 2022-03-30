@@ -3,6 +3,8 @@ import dry from "../../assets/images/services/drycleaning.jpeg";
 import iron from "../../assets/images/services/ironing.jpeg";
 import sew from "../../assets/images/services/sewing.jpg";
 
+const baseTimeForDelay = 100;
+
 const serviceCardData = [
   {
     id: 1,
@@ -68,3 +70,5 @@ const serviceCardData = [
     animationDelay: baseTimeForDelay * 4,
   },
 ];
+
+export default serviceCardData;

@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "../../components/card/Card";
 
-import serviceCardData from "./servicedata";
+import serviceCardData from "./serviceCardData";
 
 import "./Services.css";
 
