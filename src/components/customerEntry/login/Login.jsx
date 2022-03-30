@@ -61,6 +61,13 @@ function Login() {
     }
   };
 
+  const clearLoginForm = () => {
+    setLogin({
+      username: "",
+      password: "",
+    });
+  };
+
   const loginCustomer = async () => {
     await api
       .post("/customer/login", login)
@@ -79,6 +86,8 @@ function Login() {
             draggable: true,
             progress: undefined,
           });
+
+          clearLoginForm();
         }
       })
       .catch((error) => console.log(error));
