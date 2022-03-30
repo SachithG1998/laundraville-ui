@@ -10,7 +10,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Signup from "./pages/signup/SignUp";
-import Login from "./components/login/Login";
+import Login from "./components/customerEntry/login/Login";
 import Services from "./pages/services/Services";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
