@@ -1,5 +1,5 @@
 import React from "react";
-import cover from "../../assets/images/about/cover.jpg";
+import cover from "../../../assets/images/about/cover.jpg";
 import "./about.css";
 function About() {
   return (
@@ -24,6 +24,7 @@ function About() {
           We are working hard to earn your trust and It’s our pleasure to keep
           our customers satisfied with our quality & 100% happiness services
         </p>
+        <h3>meet our team</h3>
       </main>
     </div>
   );
