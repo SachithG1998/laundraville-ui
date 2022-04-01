@@ -76,7 +76,20 @@ function Login() {
 
         console.log(res);
 
-        if (status === 200) {
+        if (status === 200 && data.statusMessage === "CUSTOMER_NOT_FOUND") {
+          toast.warning(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else if (
+          status === 200 &&
+          data.statusMessage === "CUSTOMER_AUTHENTICATED"
+        ) {
           toast.success(data.message, {
             position: "top-right",
             autoClose: 5000,
@@ -87,7 +100,25 @@ function Login() {
             progress: undefined,
           });
 
+          // Redirects to the dashboard upon login
+          setTimeout(() => {
+            window.location.assign("/dashboard");
+          }, 5000);
+
           clearLoginForm();
+        } else if (
+          status === 200 &&
+          data.statusMessage === "CUSTOMER_NOT_AUTHENTICATED"
+        ) {
+          toast.error(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       })
       .catch((error) => console.log(error));

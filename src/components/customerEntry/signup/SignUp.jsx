@@ -9,7 +9,7 @@ import "../styles.css";
 const axios = require("axios").default;
 
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
 });
 
 function SignUp() {
