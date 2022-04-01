@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import moment from "moment";
+import moment, { calendarFormat } from "moment";
 
 import { toast } from "react-toastify";
 
@@ -92,13 +92,33 @@ function SignUp() {
     }
   };
 
+  const clearForm = () => {
+    setCustomer({
+      firstName: "",
+      lastName: "",
+      dob: "",
+      addressLine1: "",
+      addressLine2: "",
+      postalCity: "",
+      district: "",
+      phone: "",
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
   const registerCustomer = async () => {
     await api
       .post("/customer/register", customer)
       .then((res) => {
         const { status, data } = res;
 
-        if (status === 200) {
+        if (
+          status === 200 &&
+          data.statusMessage === "CUSTOMER_REGISTERED_SUCCESSFULLY"
+        ) {
           toast.success(data.message, {
             position: "top-right",
             autoClose: 5000,
@@ -108,6 +128,23 @@ function SignUp() {
             draggable: true,
             progress: undefined,
           });
+
+          clearForm();
+        } else if (status === 200 && data.statusMessage === "CUSTOMER_EXISTS") {
+          toast.warning(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+
+          // Redirect to login page after 5 seconds
+          setTimeout(() => {
+            window.location = "/login";
+          }, 5000);
         }
       })
       .catch((error) => console.log(error));
