@@ -2,6 +2,7 @@ import React from "react";
 
 import Basket from "./Basket";
 import CustomerEntry from "./CustomerEntry";
+import Profile from "./Profile";
 
 import { pages } from "../../../routes";
 
@@ -36,8 +37,14 @@ function Navlinks() {
           })}
         </div>
 
-        <CustomerEntry />
-        <Basket />
+        <div className="d-flex justify-content-between align-items-center">
+          {JSON.parse(localStorage.getItem("loggedIn")) ? (
+            <Profile />
+          ) : (
+            <CustomerEntry />
+          )}
+          <Basket />
+        </div>
       </div>
     </>
   );
