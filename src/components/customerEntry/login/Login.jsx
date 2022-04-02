@@ -100,6 +100,8 @@ function Login() {
             progress: undefined,
           });
 
+          localStorage.setItem("loggedIn", JSON.stringify(true));
+
           // Redirects to the dashboard upon login
           setTimeout(() => {
             window.location.assign("/dashboard");
