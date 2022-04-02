@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import moment, { calendarFormat } from "moment";
+import moment from "moment";
 
 import { toast } from "react-toastify";
 
@@ -59,7 +59,6 @@ function SignUp() {
     // formatting if dob field is recieved
     if (name === "dob") {
       value = moment(value).format("YYYY-MM-DD");
-      console.log(value);
     }
 
     setCustomer((prevState) => {
