@@ -2,7 +2,7 @@ import React from "react";
 
 function CustomerEntry() {
   return (
-    <div className="">
+    <div>
       <a type="button" href="/login" className="btn btn-outline-primary m-2">
         Log In
       </a>
