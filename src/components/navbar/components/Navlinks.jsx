@@ -1,8 +1,8 @@
 import React from "react";
 
-import Basket from "./Basket";
+import Basket from "../../basket/Basket";
 import CustomerEntry from "./CustomerEntry";
-import Profile from "./Profile";
+import Profile from "../../customerEntry/profile/Profile";
 
 import { pages } from "../../../routes";
 

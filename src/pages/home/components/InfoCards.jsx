@@ -20,7 +20,7 @@ function InfoCards() {
                 cardImage={infoCard.image}
                 cardTitle={infoCard.title}
                 cardText={infoCard.text}
-                cardStyle="h-100"
+                cardStyle="h-100 glassy dark rounded-corners"
                 dataAos="fade-down"
                 dataAosDuration="1000"
                 dataAosDelay={infoCard.animationDelay}

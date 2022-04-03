@@ -158,6 +158,10 @@ function SignUp() {
     }
   };
 
+  // Redirect to dashboard conditionally on the loggedIn state
+  if (JSON.parse(localStorage.getItem("loggedIn")))
+    return window.location.assign("/dashboard");
+
   return (
     <div className="page-content my-5">
       <div className="form-v10-content">
