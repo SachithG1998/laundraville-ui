@@ -2,6 +2,8 @@ import React from "react";
 
 import profileIcon from "../../../assets/images/dashboard/profile-icon.png";
 
+import logout from "../../../helpers/logout";
+
 function Profile() {
   return (
     <>
@@ -17,7 +19,7 @@ function Profile() {
             src={profileIcon}
             alt="Profile Icon"
             className="img-responsive"
-            height="50px"
+            height="40px"
           />
         </a>
 
@@ -31,15 +33,7 @@ function Profile() {
             </a>
           </li>
           <li>
-            <a
-              className="dropdown-item"
-              onClick={() => {
-                console.log(JSON.parse(localStorage.getItem("loggedIn")));
-                localStorage.setItem("loggedIn", false);
-
-                window.location.reload();
-              }}
-            >
+            <a className="dropdown-item" onClick={logout}>
               Log Out
             </a>
           </li>
