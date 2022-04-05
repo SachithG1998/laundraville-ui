@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
+import "./common/forms.css";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,6 +13,7 @@ import About from "./pages/about/About";
 import Signup from "./pages/signup/SignUp";
 import Login from "./components/customerEntry/login/Login";
 import Services from "./pages/services/Services";
+import Pricing from "./components/pricing/Pricing";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -25,15 +27,18 @@ function App() {
     <>
       <Navbar />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/pricing" element={<Pricing />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
 
       <Footer />
 

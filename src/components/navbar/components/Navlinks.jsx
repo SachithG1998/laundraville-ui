@@ -37,7 +37,8 @@ function Navlinks() {
         </div>
 
         <CustomerEntry />
-        <Basket />
+
+        {JSON.parse(localStorage.getItem("loggedIn")) ? <Basket /> : <></>}
       </div>
     </>
   );
