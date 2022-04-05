@@ -8,7 +8,7 @@ import "./styles.css";
 const axios = require("axios").default;
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/api`,
 });
 
 function Dashboard() {

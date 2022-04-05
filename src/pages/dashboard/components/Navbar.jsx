@@ -7,7 +7,7 @@ import LaundravilleBrand from "../../../components/brand/LaundravilleBrand";
 function Navbar() {
   return (
     <nav class="navbar fixed-top flex-md-nowrap ps-2 glassy light">
-      <LaundravilleBrand to="/dashboard" />
+      <LaundravilleBrand to="/" />
       <div className="d-flex flex-row-reverse align-items-center">
         <Basket />
         <Profile />

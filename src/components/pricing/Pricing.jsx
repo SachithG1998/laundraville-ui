@@ -55,7 +55,7 @@ function Pricing() {
           return (
             <div
               id="pricing-card"
-              class="card glassy light border-0 col-12 col-md-6 col-lg-3 my-5 mx-5"
+              class="card glassy light rounded-corners border-0 col-12 col-md-6 col-lg-3 my-5 mx-5"
             >
               <img
                 class="mx-auto img-thumbnail border-0"
@@ -66,11 +66,13 @@ function Pricing() {
               <div class="card-body text-center mx-auto">
                 <h5 class="card-title">{service.serviceName}</h5>
                 <p class="card-text">
-                  {currencyFormatter.format(service.unitPrice)}
+                  {`${currencyFormatter.format(service.unitPrice)} / ${
+                    service.unit
+                  }`}
                 </p>
 
                 {JSON.parse(localStorage.getItem("loggedIn")) ? (
-                  <AddToCart />
+                  <AddToCart service={service} />
                 ) : (
                   <></>
                 )}

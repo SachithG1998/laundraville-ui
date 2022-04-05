@@ -37,8 +37,6 @@ function Navlinks() {
           })}
         </div>
 
-        <CustomerEntry />
-
         <div className="d-flex justify-content-between align-items-center">
           {JSON.parse(localStorage.getItem("loggedIn")) ? (
             <Profile />
