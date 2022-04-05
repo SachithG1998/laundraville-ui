@@ -3,7 +3,7 @@ import React from "react";
 function Card(props) {
   return (
     <div
-      className={`card card-layout glassy dark rounded-corners ${props.cardStyle}`}
+      className={`card card-layout ${props.cardStyle}`}
       data-aos={props.dataAos}
       data-aos-duration={props.dataAosDuration}
       data-aos-delay={props.dataAosDelay}

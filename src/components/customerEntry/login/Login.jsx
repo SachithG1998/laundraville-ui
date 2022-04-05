@@ -100,6 +100,9 @@ function Login() {
             progress: undefined,
           });
 
+          localStorage.setItem("loggedIn", JSON.stringify(true));
+          localStorage.setItem("customerID", JSON.stringify(data.id));
+
           // Redirects to the dashboard upon login
           setTimeout(() => {
             window.location.assign("/dashboard");
@@ -131,6 +134,10 @@ function Login() {
       loginCustomer();
     }
   };
+
+  // Redirect to dashboard conditionally on the loggedIn state
+  if (JSON.parse(localStorage.getItem("loggedIn")))
+    return window.location.assign("/dashboard");
 
   return (
     <div id="login-form-container" className="page-content my-5">
