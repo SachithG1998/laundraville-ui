@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BasketList from "../basketList/BasketList";
 
 import "./Basket.css";
 
@@ -25,7 +26,13 @@ class Basket extends Component {
   render() {
     return (
       <div className="p-4">
-        <i class="position-relative fa-solid fa-basket-shopping fa-2xl">
+        <i
+          class="position-relative fa-solid fa-basket-shopping fa-2xl"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#basketList"
+          aria-controls="offcanvasRight"
+        >
           {this.state.basketItemCount > 0 ? (
             <span
               id="basket-badge"
@@ -38,6 +45,8 @@ class Basket extends Component {
             <></>
           )}
         </i>
+
+        <BasketList />
       </div>
     );
   }
