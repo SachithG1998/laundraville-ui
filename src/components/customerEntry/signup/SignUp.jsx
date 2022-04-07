@@ -89,7 +89,7 @@ function SignUp() {
     }
   };
 
-  const clearForm = () => {
+  const resetRegisterForm = () => {
     setCustomer({
       firstName: "",
       lastName: "",
@@ -125,8 +125,6 @@ function SignUp() {
             draggable: true,
             progress: undefined,
           });
-
-          clearForm();
         } else if (status === 200 && data.statusMessage === "CUSTOMER_EXISTS") {
           toast.warning(data.message, {
             position: "top-right",
@@ -142,6 +140,7 @@ function SignUp() {
           setTimeout(() => {
             window.location = "/login";
           }, 5000);
+          resetRegisterForm();
         }
       })
       .catch((error) => console.log(error));
