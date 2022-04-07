@@ -5,7 +5,7 @@ import moment from "moment";
 import { toast } from "react-toastify";
 
 import "../contact/Contstyles.css";
-import Googlemap from "./Googlemap";
+
 
 const axios = require("axios").default;
 
@@ -139,7 +139,7 @@ function SignUp() {
                                 </div>
                                 <div className="form-row form-row-2">
                                     <i class="fa fa-phone"></i>
-                                    <a href="tel://123456789"> +94 77 1234567</a>
+                                    <a href="tel:+94 771234567"> +94 771234567</a>
                                 </div>
                             </div>
 
@@ -149,7 +149,7 @@ function SignUp() {
                                 </div>
                                 <div className="form-row form-row-1">
                                     <i class="fa a-map-marker"></i>
-                                    University Kandy Road Kelaniya, 11600
+                                    <a href="https://goo.gl/maps/ozkvCeZjaJkjMZXJ9" target="_blank">University Kandy Road Kelaniya, 11600</a>
                                 </div>
                             </div>
 
@@ -159,13 +159,8 @@ function SignUp() {
                                 </div>
                                 <div className="form-row form-row-1">
                                     <i class="fa fa-envelope"></i>
-                                    laundravillelaundry@gmail.com
+                                    <a href="mailto:laundravillelaundry@gmail.com? Subject=Welcometo%20laundraville" target="_top">laundravillelaundry@gmail.com</a>
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <>
-                                    <Googlemap />
-                                </>
                             </div>
                         </div>
                     </div>
