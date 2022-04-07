@@ -1,17 +1,78 @@
 import React, { useEffect, useState } from "react";
-
-const moment = require("moment");
+import { toast } from "react-toastify";
 
 function AddToCart(props) {
   const [quantity, setQuantity] = useState(0);
 
-  const [basket, setBasket] = useState([]);
-
-  useEffect(() => {
+  function onClickAddToCart() {
     return () => {
-      localStorage.setItem("basket", basket);
+      if (quantity !== 0) {
+        props.api
+          .get(`/basket/${JSON.parse(localStorage.getItem("customerID"))}`)
+          .then((res) => {
+            const { status, data } = res;
+
+            if (status === 200) {
+              if (JSON.parse(!data.basketExists)) {
+                props.createBasket(
+                  JSON.parse(localStorage.getItem("customerID"))
+                );
+              } else {
+                localStorage.setItem("basketID", JSON.stringify(data.basketID));
+                const itemInBasket = props.basketItems.find(
+                  (basketItem) => basketItem.serviceID === props.service._id
+                );
+
+                if (!itemInBasket) {
+                  props.setBasketItems((prevState) => {
+                    return [
+                      ...prevState,
+                      {
+                        basketID: data.basketID,
+                        serviceID: props.service._id,
+                        unitPrice: props.service.unitPrice,
+                        quantity: quantity,
+                      },
+                    ];
+                  });
+                } else {
+                  const existingQuantity = itemInBasket.quantity;
+
+                  props.setBasketItems(() => {
+                    const existingRemovedBasketItems = props.basketItems.filter(
+                      (basketItem) =>
+                        basketItem.serviceID !== itemInBasket.serviceID
+                    );
+
+                    return [
+                      ...existingRemovedBasketItems,
+                      {
+                        basketID: data.basketID,
+                        serviceID: props.service._id,
+                        unitPrice: props.service.unitPrice,
+                        quantity: quantity + existingQuantity,
+                      },
+                    ];
+                  });
+                }
+
+                setQuantity(0);
+              }
+            }
+          });
+      } else {
+        toast.warning("Please select a quantity other than zero", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     };
-  }, []);
+  }
 
   return (
     <div className="row">
@@ -47,18 +108,7 @@ function AddToCart(props) {
       <span
         className="col-2 d-flex justify-content-center align-items-center"
         role="button"
-        onClick={() => {
-          setBasket((prevState) =>
-            prevState.concat({
-              customerID: JSON.parse(localStorage.getItem("customerID")),
-              serviceID: props.service._id,
-              quantity: quantity,
-              datetimeOfOrder: moment().format(),
-            })
-          );
-
-          console.log(basket);
-        }}
+        onClick={onClickAddToCart()}
       >
         <i class="fa-solid fa-basket-shopping fa-lg"></i>
       </span>

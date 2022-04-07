@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import moment from "moment";
+
 import AddToCart from "./components/AddToCart";
 
 import "./Pricing.css";
@@ -12,6 +14,50 @@ const api = axios.create({
 
 function Pricing() {
   const [services, setServices] = useState([]);
+
+  const [basketItems, setBasketItems] = useState([]);
+
+  useEffect(async () => {
+    if (basketItems != 0) {
+      await api
+        .post(
+          `/basket/saveBasket/${JSON.parse(localStorage.getItem("basketID"))}`,
+          { basketItems: basketItems }
+        )
+        .then((res) => {
+          const { status, data } = res;
+
+          if (status === 200) {
+            if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
+              toast.success(data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+            }
+          }
+        });
+    }
+  }, [basketItems]);
+
+  const createBasket = (customerID) => {
+    api
+      .post("/basket/newBasket", {
+        customerID: customerID,
+        basketDatetime: moment().format(),
+      })
+      .then((res) => {
+        const { status, data } = res;
+
+        if (status === 200) {
+          console.log(data);
+        }
+      });
+  };
 
   useEffect(async () => {
     await api.get("/all").then((res) => {
@@ -55,7 +101,8 @@ function Pricing() {
           return (
             <div
               id="pricing-card"
-              class="card glassy light rounded-corners border-0 col-12 col-md-6 col-lg-3 my-5 mx-5"
+              key={service._id}
+              class="card glassy light rounded-corners border-0 col-12 col-md-6 col-lg-3 m-5"
             >
               <img
                 class="mx-auto img-thumbnail border-0"
@@ -72,7 +119,13 @@ function Pricing() {
                 </p>
 
                 {JSON.parse(localStorage.getItem("loggedIn")) ? (
-                  <AddToCart service={service} />
+                  <AddToCart
+                    api={api}
+                    service={service}
+                    basketItems={basketItems}
+                    setBasketItems={setBasketItems}
+                    createBasket={createBasket}
+                  />
                 ) : (
                   <></>
                 )}
