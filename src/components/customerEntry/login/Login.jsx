@@ -100,6 +100,16 @@ function Login() {
             progress: undefined,
           });
 
+          api.get(`/service/basket/${data.id}`).then((res) => {
+            const { status, data } = res;
+
+            if (status === 200) {
+              if (data.basketExists) {
+                localStorage.setItem("basketID", JSON.stringify(data.basketID));
+              }
+            }
+          });
+
           localStorage.setItem("loggedIn", JSON.stringify(true));
           localStorage.setItem("customerID", JSON.stringify(data.id));
 
