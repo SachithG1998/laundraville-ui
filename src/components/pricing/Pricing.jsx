@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import moment from "moment";
 
+import formatCurrency from "../../helpers/formatCurrency";
+
 import AddToCart from "./components/AddToCart";
 
 import "./Pricing.css";
@@ -17,31 +19,37 @@ function Pricing() {
 
   const [basketItems, setBasketItems] = useState([]);
 
-  useEffect(async () => {
-    if (basketItems != 0) {
-      await api
-        .post(
-          `/basket/saveBasket/${JSON.parse(localStorage.getItem("basketID"))}`,
-          { basketItems: basketItems }
-        )
-        .then((res) => {
-          const { status, data } = res;
+  useEffect(() => {
+    async function postData() {
+      if (basketItems !== 0) {
+        await api
+          .post(
+            `/basket/saveBasket/${JSON.parse(
+              localStorage.getItem("basketID")
+            )}`,
+            { basketItems: basketItems }
+          )
+          .then((res) => {
+            const { status, data } = res;
 
-          if (status === 200) {
-            if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
-              toast.success(data.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
+            if (status === 200) {
+              if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
+                toast.success(data.message, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+              }
             }
-          }
-        });
+          });
+      }
     }
+
+    postData();
   }, [basketItems]);
 
   const createBasket = (customerID) => {
@@ -59,40 +67,39 @@ function Pricing() {
       });
   };
 
-  useEffect(async () => {
-    await api.get("/all").then((res) => {
-      const { status, data } = res;
+  useEffect(() => {
+    async function getData() {
+      await api.get("/all").then((res) => {
+        const { status, data } = res;
 
-      if (status === 200 && data.statusMessage === "RETURNED_SERVICES") {
-        setServices(data.services);
-      } else if (status === 200 && data.statusMessage === "NO_SERVICES") {
-        toast.warning(data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      } else if (data.statusMessage === "ERROR") {
-        toast.error(data.errorMessage, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    });
+        if (status === 200 && data.statusMessage === "RETURNED_SERVICES") {
+          setServices(data.services);
+        } else if (status === 200 && data.statusMessage === "NO_SERVICES") {
+          toast.warning(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else if (data.statusMessage === "ERROR") {
+          toast.error(data.errorMessage, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      });
+    }
+
+    getData();
   }, []);
-
-  var currencyFormatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "LKR",
-  });
 
   return (
     <div class="container-fluid p-3">
@@ -113,9 +120,7 @@ function Pricing() {
               <div class="card-body text-center mx-auto">
                 <h5 class="card-title">{service.serviceName}</h5>
                 <p class="card-text">
-                  {`${currencyFormatter.format(service.unitPrice)} / ${
-                    service.unit
-                  }`}
+                  {`${formatCurrency(service.unitPrice)} / ${service.unit}`}
                 </p>
 
                 {JSON.parse(localStorage.getItem("loggedIn")) ? (
