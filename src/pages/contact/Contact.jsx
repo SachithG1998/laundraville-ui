@@ -5,6 +5,7 @@ import moment from "moment";
 import { toast } from "react-toastify";
 
 import "../contact/Contstyles.css";
+import Googlemap from "./Googlemap";
 
 const axios = require("axios").default;
 
@@ -160,6 +161,11 @@ function SignUp() {
                                     <i class="fa fa-envelope"></i>
                                     laundravillelaundry@gmail.com
                                 </div>
+                            </div>
+                            <div className="form-group">
+                                <>
+                                    <Googlemap />
+                                </>
                             </div>
                         </div>
                     </div>
