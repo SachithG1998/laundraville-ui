@@ -1,7 +1,4 @@
 import React from "react";
-import cover from "srcassetsimagesabouthiruni.png";
-import cover from "srcassetsimagesaboutsachith.png";
-import cover from "srcassetsimagesaboutyoshitha.png";
 import "./about.css";
 function About() {
   return (
