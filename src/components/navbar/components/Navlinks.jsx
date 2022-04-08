@@ -1,7 +1,8 @@
 import React from "react";
 
-import Basket from "./Basket";
+import Basket from "../../basket/Basket";
 import CustomerEntry from "./CustomerEntry";
+import Profile from "../../customerEntry/profile/Profile";
 
 import { pages } from "../../../routes";
 
@@ -36,8 +37,15 @@ function Navlinks() {
           })}
         </div>
 
-        <CustomerEntry />
-        <Basket />
+        <div className="d-flex justify-content-between align-items-center">
+          {JSON.parse(localStorage.getItem("loggedIn")) ? (
+            <Profile />
+          ) : (
+            <CustomerEntry />
+          )}
+
+          {JSON.parse(localStorage.getItem("loggedIn")) ? <Basket /> : <></>}
+        </div>
       </div>
     </>
   );

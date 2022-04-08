@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Joi from "joi";
-import moment, { calendarFormat } from "moment";
+import moment from "moment";
 
 import { toast } from "react-toastify";
-
-import "../styles.css";
 
 const axios = require("axios").default;
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/api`,
 });
 
 function SignUp() {
@@ -59,7 +57,6 @@ function SignUp() {
     // formatting if dob field is recieved
     if (name === "dob") {
       value = moment(value).format("YYYY-MM-DD");
-      console.log(value);
     }
 
     setCustomer((prevState) => {
@@ -92,7 +89,7 @@ function SignUp() {
     }
   };
 
-  const clearForm = () => {
+  const resetRegisterForm = () => {
     setCustomer({
       firstName: "",
       lastName: "",
@@ -128,8 +125,6 @@ function SignUp() {
             draggable: true,
             progress: undefined,
           });
-
-          clearForm();
         } else if (status === 200 && data.statusMessage === "CUSTOMER_EXISTS") {
           toast.warning(data.message, {
             position: "top-right",
@@ -145,6 +140,7 @@ function SignUp() {
           setTimeout(() => {
             window.location = "/login";
           }, 5000);
+          resetRegisterForm();
         }
       })
       .catch((error) => console.log(error));
@@ -158,6 +154,10 @@ function SignUp() {
       registerCustomer();
     }
   };
+
+  // Redirect to dashboard conditionally on the loggedIn state
+  if (JSON.parse(localStorage.getItem("loggedIn")))
+    return window.location.assign("/dashboard");
 
   return (
     <div className="page-content my-5">

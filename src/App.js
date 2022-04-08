@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./common/styles.css";
+import "./common/forms.css";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,6 +13,8 @@ import About from "./pages/about/About";
 import Signup from "./pages/signup/SignUp";
 import Login from "./components/customerEntry/login/Login";
 import Services from "./pages/services/Services";
+import Pricing from "./components/pricing/Pricing";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -23,19 +26,25 @@ AOS.init();
 function App() {
   return (
     <>
-      <Navbar />
+      {/* Dynamically renders the navigation bar based on the current path */}
+      {window.location.pathname === "/dashboard" ? <></> : <Navbar />}
 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
 
-      <Footer />
+      {/* Dynamically renders the footer based on the current path */}
+      {window.location.pathname === "/dashboard" ? <></> : <Footer />}
 
       <ToastContainer
         autoClose={5000}

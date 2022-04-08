@@ -3,12 +3,12 @@ import Joi from "joi";
 
 import { toast } from "react-toastify";
 
-import axios from "axios";
+import "./Login.css";
 
-import "../styles.css";
+const axios = require("axios").default;
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL,
+  baseURL: `${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/api`,
 });
 
 function Login() {
@@ -100,6 +100,9 @@ function Login() {
             progress: undefined,
           });
 
+          localStorage.setItem("loggedIn", JSON.stringify(true));
+          localStorage.setItem("customerID", JSON.stringify(data.id));
+
           // Redirects to the dashboard upon login
           setTimeout(() => {
             window.location.assign("/dashboard");
@@ -132,8 +135,12 @@ function Login() {
     }
   };
 
+  // Redirect to dashboard conditionally on the loggedIn state
+  if (JSON.parse(localStorage.getItem("loggedIn")))
+    return window.location.assign("/dashboard");
+
   return (
-    <div className="page-content my-5">
+    <div id="login-form-container" className="page-content my-5">
       <div className="form-v10-content">
         <form
           className="form-detail"

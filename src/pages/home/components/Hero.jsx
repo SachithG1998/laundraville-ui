@@ -17,7 +17,7 @@ function Hero() {
             cardTitle={introCardData.title}
             cardText={introCardData.text}
             cardButton={introCardData.button}
-            cardStyle="intro-card text-white"
+            cardStyle="intro-card text-white glassy dark rounded-corners"
             dataAos="fade-right"
           />
         </div>
