@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 function AddToCart(props) {
@@ -85,7 +85,7 @@ function AddToCart(props) {
               if (quantity > 0) setQuantity(quantity - 1);
             }}
           >
-            <i class="fa-solid fa-circle-minus fa-lg"></i>
+            <i className="fa-solid fa-circle-minus fa-lg"></i>
           </span>
           <input
             type="text"
@@ -101,7 +101,7 @@ function AddToCart(props) {
               setQuantity(quantity + 1);
             }}
           >
-            <i class="fa-solid fa-circle-plus fa-lg"></i>
+            <i className="fa-solid fa-circle-plus fa-lg"></i>
           </span>
         </div>
       </div>
@@ -110,7 +110,7 @@ function AddToCart(props) {
         role="button"
         onClick={onClickAddToCart()}
       >
-        <i class="fa-solid fa-basket-shopping fa-lg"></i>
+        <i className="fa-solid fa-basket-shopping fa-lg"></i>
       </span>
     </div>
   );
