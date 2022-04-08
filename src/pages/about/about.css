@@ -1,6 +1,32 @@
-div.cover-area{
-    background-color: darkgray ;
-    text-align: center;
-    text-emphasis-color:white;
-    text-decoration: solid;
+div.cover-area {
+  background-color: darkgray;
+  text-align: center;
+  text-emphasis-color: white;
+  text-decoration: solid;
+}
+div.paragraph {
+  background-color: lightgrey;
+  border: 15px;
+  padding: 50px;
+  margin: 20px;
+}
+p.text1 {
+  text-align: center;
+}
+p.text2 {
+  text-align: center;
+}
+p.text3 {
+  text-align: center;
+}
+h2{
+  margin-right: 5%;
+}
+img {
+  border-radius: 50%;
+  width:  200px;
+  height: 200px;
+}
+div.div2{
+  background-color: lightgrey;
 }
