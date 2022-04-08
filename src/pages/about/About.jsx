@@ -1,4 +1,7 @@
 import React from "react";
+import cover from "srcassetsimagesabouthiruni.png";
+import cover from "srcassetsimagesaboutsachith.png";
+import cover from "srcassetsimagesaboutyoshitha.png";
 import "./about.css";
 function About() {
   return (
@@ -34,7 +37,7 @@ function About() {
               <div className="col">
                 {" "}
                 <img
-                  src="https://mdbootstrap.com/img/new/standard/city/047.webp"
+                  src="sachith.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
@@ -46,7 +49,7 @@ function About() {
               </div>
               <div className="col">
                 <img
-                  src="https://mdbootstrap.com/img/new/standard/city/047.webp"
+                  src="yoshitha.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
@@ -58,7 +61,7 @@ function About() {
               </div>
               <div className="col">
                 <img
-                  src="https://mdbootstrap.com/img/new/standard/city/047.webp"
+                  src="hiruni.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
