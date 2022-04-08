@@ -7,10 +7,9 @@ import logout from "../../../helpers/logout";
 function Profile() {
   return (
     <>
-      <div class="dropdown">
-        <a
-          class="btn btn-outline-light dropdown-toggle"
-          role="button"
+      <div className="dropdown">
+        <button
+          className="btn btn-outline-light dropdown-toggle"
           id="profileDropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -21,10 +20,10 @@ function Profile() {
             className="img-responsive"
             height="40px"
           />
-        </a>
+        </button>
 
         <ul
-          class="dropdown-menu glassy light"
+          className="dropdown-menu glassy light"
           aria-labelledby="profileDropdown"
         >
           <li>
@@ -33,9 +32,9 @@ function Profile() {
             </a>
           </li>
           <li>
-            <a className="dropdown-item" onClick={logout}>
+            <button className="dropdown-item" onClick={logout}>
               Log Out
-            </a>
+            </button>
           </li>
         </ul>
       </div>
