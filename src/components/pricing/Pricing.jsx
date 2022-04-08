@@ -7,6 +7,7 @@ import formatCurrency from "../../helpers/formatCurrency";
 import AddToCart from "./components/AddToCart";
 
 import "./Pricing.css";
+import populateBasketItems from "../../helpers/populateBasketItems";
 
 const axios = require("axios").default;
 
@@ -21,6 +22,8 @@ function Pricing() {
 
   useEffect(() => {
     async function postData() {
+      populateBasketItems(setBasketItems);
+      console.log(basketItems);
       if (basketItems !== 0) {
         await api
           .post(
@@ -36,7 +39,7 @@ function Pricing() {
               if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
                 toast.success(data.message, {
                   position: "top-right",
-                  autoClose: 5000,
+                  autoClose: 500,
                   hideProgressBar: false,
                   closeOnClick: true,
                   pauseOnHover: true,
@@ -51,21 +54,6 @@ function Pricing() {
 
     postData();
   }, [basketItems]);
-
-  const createBasket = (customerID) => {
-    api
-      .post("/basket/newBasket", {
-        customerID: customerID,
-        basketDatetime: moment().format(),
-      })
-      .then((res) => {
-        const { status, data } = res;
-
-        if (status === 200) {
-          console.log(data);
-        }
-      });
-  };
 
   useEffect(() => {
     async function getData() {
@@ -101,25 +89,40 @@ function Pricing() {
     getData();
   }, []);
 
+  const createBasket = (customerID) => {
+    api
+      .post("/basket/newBasket", {
+        customerID: customerID,
+        basketDatetime: moment().format(),
+      })
+      .then((res) => {
+        const { status, data } = res;
+
+        if (status === 200) {
+          console.log(data);
+        }
+      });
+  };
+
   return (
-    <div class="container-fluid p-3">
+    <div className="container-fluid p-3">
       <div className="row d-flex justify-content-center p-5 p-md-4 p-lg-3">
         {services.map((service) => {
           return (
             <div
               id="pricing-card"
               key={service._id}
-              class="card glassy light rounded-corners border-0 col-12 col-md-6 col-lg-3 m-5"
+              className="card glassy light rounded-corners border-0 col-12 col-md-6 col-lg-3 m-5"
             >
               <img
-                class="mx-auto img-thumbnail border-0"
+                className="mx-auto img-thumbnail border-0"
                 style={{ height: "200px" }}
                 src={`${process.env.REACT_APP_LAUNDRAVILLE_UI_API_URL}/static/images/${service.image}`}
                 alt="descriptive text"
               />
-              <div class="card-body text-center mx-auto">
-                <h5 class="card-title">{service.serviceName}</h5>
-                <p class="card-text">
+              <div className="card-body text-center mx-auto">
+                <h5 className="card-title">{service.serviceName}</h5>
+                <p className="card-text">
                   {`${formatCurrency(service.unitPrice)} / ${service.unit}`}
                 </p>
 
