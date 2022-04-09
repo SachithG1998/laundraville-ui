@@ -5,10 +5,12 @@ div.cover-area {
   text-decoration: solid;
 }
 div.paragraph {
-  background-color: lightgrey;
   border: 15px;
   padding: 50px;
   margin: 20px;
+}
+p.text0{
+  text-align: justify;
 }
 p.text1 {
   text-align: center;
@@ -19,14 +21,12 @@ p.text2 {
 p.text3 {
   text-align: center;
 }
-h2{
+
+.page-about h2{
   margin-right: 5%;
 }
 .page-about img {
   border-radius: 50%;
   width:  200px;
   height: 200px;
-}
-div.div2{
-  background-color: lightgrey;
 }
