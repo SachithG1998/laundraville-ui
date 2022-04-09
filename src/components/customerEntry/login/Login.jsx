@@ -74,8 +74,6 @@ function Login() {
       .then((res) => {
         const { status, data } = res;
 
-        console.log(res);
-
         if (status === 200 && data.statusMessage === "CUSTOMER_NOT_FOUND") {
           toast.warning(data.message, {
             position: "top-right",
@@ -98,6 +96,16 @@ function Login() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
+          });
+
+          api.get(`/service/basket/${data.id}`).then((res) => {
+            const { status, data } = res;
+
+            if (status === 200) {
+              if (data.basketExists) {
+                localStorage.setItem("basketID", JSON.stringify(data.basketID));
+              }
+            }
           });
 
           localStorage.setItem("loggedIn", JSON.stringify(true));

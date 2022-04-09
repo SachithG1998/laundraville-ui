@@ -13,7 +13,7 @@ function Servicecards() {
         {serviceCardData.map((SCard) => {
           return (
             <div key={SCard.id} className="row g-0 text-white text-center">
-              <div class="col-md-4" id="pic">
+              <div className="col-md-4" id="pic">
                 <Card cardImage={SCard.image} />
               </div>
 
@@ -21,7 +21,7 @@ function Servicecards() {
                 <Card
                   cardTitle={SCard.title}
                   cardText={SCard.text}
-                  cardStyle="h-100"
+                  cardStyle="h-100 galssy dark"
                   dataAos="fade-down"
                   dataAosDuration="1000"
                   dataAosDelay={SCard.animationDelay}

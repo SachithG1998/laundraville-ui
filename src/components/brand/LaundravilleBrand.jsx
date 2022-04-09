@@ -4,7 +4,7 @@ import Logo from "../../assets/images/Logo.png";
 
 function LaundravilleBrand(props) {
   return (
-    <a class="navbar-brand navbar-logo-anchor" href={props.to}>
+    <a className="navbar-brand navbar-logo-anchor" href={props.to}>
       <img src={Logo} alt="Laundraville Logo" className="navbar-logo" />
     </a>
   );

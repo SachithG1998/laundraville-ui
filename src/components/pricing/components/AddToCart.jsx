@@ -1,13 +1,64 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 function AddToCart(props) {
   const [quantity, setQuantity] = useState(0);
 
-  function onClickAddToCart() {
-    return () => {
-      if (quantity !== 0) {
-        props.api
+  const addToBasket = (data) => {
+    props.api
+      .post("/basket/addToBasket", {
+        basketID: data.basketID,
+        serviceID: props.service._id,
+        unitPrice: props.service.unitPrice,
+        quantity: quantity,
+      })
+      .then((res) => {
+        const { status, data } = res;
+
+        if (status === 200) {
+          if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
+            toast.success(data.message, {
+              position: "top-right",
+              autoClose: 500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (
+            data.statusMessage === "BASKET_ITEM_UPDATED_SUCCESSFULLY"
+          ) {
+            toast.success(data.message, {
+              position: "top-right",
+              autoClose: 500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (data.statusMessage === "ERROR") {
+            toast.error(data.message, {
+              position: "top-right",
+              autoClose: 500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        }
+      });
+
+    setQuantity(0);
+  };
+
+  const onClickAddToCart = async () => {
+    if (quantity !== 0) {
+      if (JSON.parse(localStorage.getItem("loggedIn"))) {
+        await props.api
           .get(`/basket/${JSON.parse(localStorage.getItem("customerID"))}`)
           .then((res) => {
             const { status, data } = res;
@@ -15,48 +66,12 @@ function AddToCart(props) {
             if (status === 200) {
               if (JSON.parse(!data.basketExists)) {
                 props.createBasket(
-                  JSON.parse(localStorage.getItem("customerID"))
+                  JSON.parse(localStorage.getItem("customerID")),
+                  addToBasket
                 );
               } else {
                 localStorage.setItem("basketID", JSON.stringify(data.basketID));
-                const itemInBasket = props.basketItems.find(
-                  (basketItem) => basketItem.serviceID === props.service._id
-                );
-
-                if (!itemInBasket) {
-                  props.setBasketItems((prevState) => {
-                    return [
-                      ...prevState,
-                      {
-                        basketID: data.basketID,
-                        serviceID: props.service._id,
-                        unitPrice: props.service.unitPrice,
-                        quantity: quantity,
-                      },
-                    ];
-                  });
-                } else {
-                  const existingQuantity = itemInBasket.quantity;
-
-                  props.setBasketItems(() => {
-                    const existingRemovedBasketItems = props.basketItems.filter(
-                      (basketItem) =>
-                        basketItem.serviceID !== itemInBasket.serviceID
-                    );
-
-                    return [
-                      ...existingRemovedBasketItems,
-                      {
-                        basketID: data.basketID,
-                        serviceID: props.service._id,
-                        unitPrice: props.service.unitPrice,
-                        quantity: quantity + existingQuantity,
-                      },
-                    ];
-                  });
-                }
-
-                setQuantity(0);
+                addToBasket(data);
               }
             }
           });
@@ -71,8 +86,8 @@ function AddToCart(props) {
           progress: undefined,
         });
       }
-    };
-  }
+    }
+  };
 
   return (
     <div className="row">
@@ -85,7 +100,7 @@ function AddToCart(props) {
               if (quantity > 0) setQuantity(quantity - 1);
             }}
           >
-            <i class="fa-solid fa-circle-minus fa-lg"></i>
+            <i className="fa-solid fa-circle-minus fa-lg"></i>
           </span>
           <input
             type="text"
@@ -101,16 +116,16 @@ function AddToCart(props) {
               setQuantity(quantity + 1);
             }}
           >
-            <i class="fa-solid fa-circle-plus fa-lg"></i>
+            <i className="fa-solid fa-circle-plus fa-lg"></i>
           </span>
         </div>
       </div>
       <span
         className="col-2 d-flex justify-content-center align-items-center"
         role="button"
-        onClick={onClickAddToCart()}
+        onClick={onClickAddToCart}
       >
-        <i class="fa-solid fa-basket-shopping fa-lg"></i>
+        <i className="fa-solid fa-basket-shopping fa-lg"></i>
       </span>
     </div>
   );
