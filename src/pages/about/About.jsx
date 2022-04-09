@@ -2,7 +2,7 @@ import React from "react";
 import "./about.css";
 function About() {
   return (
-    <div>
+    <div className="page-about">
       <main style={{ padding: "10rem 0" }}>
         <h2>About us</h2>
         <div className="paragraph">
