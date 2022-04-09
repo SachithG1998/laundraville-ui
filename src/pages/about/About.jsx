@@ -48,7 +48,7 @@ function About() {
                   alt="Sachith"
                 />
                 <div className="my-3">
-                  <h4>Sachith</h4>
+                  <h4>Sachith Gunasekara</h4>
                 </div>
               </div>
               <div className="col-12 col-md-6 col-lg-4">
@@ -58,12 +58,12 @@ function About() {
                   alt="Sachith"
                 />
                 <div className="my-3">
-                  <h4>Yoshitha</h4>
+                  <h4>Yoshitha Wickramarathne</h4>
                 </div>
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 <img
-                  src={Hiruni}
+                  src={Hiruni Kaushalya}
                   className="img-fluid rounded-circle"
                   alt="Sachith"
                 />
