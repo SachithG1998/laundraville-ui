@@ -32,9 +32,8 @@ function About() {
             <p>we olways like to help you</p>
             <div className="row">
               <div className="col">
-                {" "}
                 <img
-                  src="sachith.png"
+                  src="../../assets/images/about/sachith.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
@@ -46,7 +45,7 @@ function About() {
               </div>
               <div className="col">
                 <img
-                  src="yoshitha.png"
+                  src="../../assets/images/about/yoshitha.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
@@ -58,7 +57,7 @@ function About() {
               </div>
               <div className="col">
                 <img
-                  src="hiruni.png"
+                  src="../../assets/images/about/hiruni.png"
                   className="img-fluid rounded-circle"
                   alt=""
                 />
