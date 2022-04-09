@@ -13,7 +13,7 @@ import About from "./pages/about/About";
 import Signup from "./pages/signup/SignUp";
 import Login from "./components/customerEntry/login/Login";
 import Services from "./pages/services/Services";
-import Pricing from "./components/pricing/Pricing";
+import Pricing from "./pages/pricing/Pricing";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Contact from "./pages/contact/Contact";
 
