@@ -121,8 +121,8 @@ function BasketList(props) {
   }, [props, basketItems]);
 
   useEffect(() => {
-    function getData() {
-      populateBasketItems(setBasketItems);
+    async function getData() {
+      await populateBasketItems(setBasketItems);
     }
 
     getData();

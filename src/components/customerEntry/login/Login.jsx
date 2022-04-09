@@ -74,8 +74,6 @@ function Login() {
       .then((res) => {
         const { status, data } = res;
 
-        console.log(res);
-
         if (status === 200 && data.statusMessage === "CUSTOMER_NOT_FOUND") {
           toast.warning(data.message, {
             position: "top-right",

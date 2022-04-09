@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PricingModal from "../../components/modals/pricingModal/PricingModal";
 
 import Navbar from "./components/Navbar";
@@ -28,27 +28,52 @@ function Dashboard() {
     email: "",
   });
 
-  window.onload = () => {
-    if (JSON.parse(localStorage.getItem("loggedIn"))) {
-      api.get(`/dashboard/customer/${customerState.id}`).then((res) => {
-        const { status, data } = res;
+  const [orderSummary, setOrderSummary] = useState({});
 
-        if (status === 200 && data.statusMessage === "CUSTOMER_FOUND") {
-          const { customer } = data;
-          setCustomerState({
-            fullName: `${customer.name.firstName} ${customer.name.lastName}`,
-            dob: customer.dob,
-            addressLine1: customer.address.line1,
-            addressLine2: customer.address.line2,
-            postalCity: customer.address.postalCity,
-            district: customer.address.district,
-            phone: customer.phone,
-            email: customer.email,
+  useEffect(() => {
+    async function getOrderSummary() {
+      if (JSON.parse(localStorage.getItem("loggedIn"))) {
+        await api
+          .get(
+            `/dashboard/customer/${JSON.parse(
+              localStorage.getItem("customerID")
+            )}/orderSummary`
+          )
+          .then((res) => {
+            const { status, data } = res;
+
+            if (status === 200) {
+              setOrderSummary(data);
+            }
           });
-        }
-      });
+      }
     }
-  };
+
+    async function getCustomerDetails() {
+      if (JSON.parse(localStorage.getItem("loggedIn"))) {
+        api.get(`/dashboard/customer/${customerState.id}`).then((res) => {
+          const { status, data } = res;
+
+          if (status === 200 && data.statusMessage === "CUSTOMER_FOUND") {
+            const { customer } = data;
+            setCustomerState({
+              fullName: `${customer.name.firstName} ${customer.name.lastName}`,
+              dob: customer.dob,
+              addressLine1: customer.address.line1,
+              addressLine2: customer.address.line2,
+              postalCity: customer.address.postalCity,
+              district: customer.address.district,
+              phone: customer.phone,
+              email: customer.email,
+            });
+          }
+        });
+      }
+    }
+
+    getOrderSummary();
+    getCustomerDetails();
+  }, []);
 
   return (
     <div className="position-relative">
