@@ -21,7 +21,7 @@ function Servicecards() {
                 <Card
                   cardTitle={SCard.title}
                   cardText={SCard.text}
-                  cardStyle="h-100"
+                  cardStyle="h-100 galssy dark"
                   dataAos="fade-down"
                   dataAosDuration="1000"
                   dataAosDelay={SCard.animationDelay}
