@@ -63,12 +63,12 @@ function About() {
               </div>
               <div className="col-12 col-md-6 col-lg-4">
                 <img
-                  src={Hiruni Kaushalya}
+                  src={Hiruni}
                   className="img-fluid rounded-circle"
                   alt="Sachith"
                 />
                 <div className="my-3">
-                  <h4>Hiruni</h4>
+                  <h4>Hiruni Kaushalya</h4>
                 </div>
               </div>
             </div>
