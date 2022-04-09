@@ -51,7 +51,6 @@ function BasketListItem(props) {
                           if (
                             data.status === "SUCCESSFULLY_DELETED_BASKET_ITEM"
                           ) {
-                            alert("came in here");
                             toast.success(data.message, {
                               position: "top-right",
                               autoClose: 500,
