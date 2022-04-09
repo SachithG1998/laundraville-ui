@@ -1,7 +1,7 @@
-import wash from "../../assets/images/services/Washing.png";
-import dry from "../../assets/images/services/drycleaning.jpeg";
-import iron from "../../assets/images/services/ironing.jpeg";
-import sew from "../../assets/images/services/sewing.jpg";
+import wash from "../../assets/images/services/cwashing.png";
+import dry from "../../assets/images/services/cdrying.png";
+import iron from "../../assets/images/services/cironing.png";
+import sew from "../../assets/images/services/csewing.png";
 
 const baseTimeForDelay = 100;
 
@@ -12,13 +12,11 @@ const serviceCardData = [
       src: wash,
       alt: "",
       att: (
-        <a href="https://lovepik.com/images/png-cartoon.html">
-          Cartoon Png vectors by Lovepik.com
-        </a>
+        <a href="https://lovepik.com/images/png-clothes-drying.html">Clothes Drying Png vectors by Lovepik.com</a>
       ),
     },
     title: "Dirty to Clean",
-    text: "We wash your clothes for you at an affordable price. Laundraville offers a high quality and convenient washing service to all our customers. Each piece of cloth that is brought to Laundromat will be washed with great care using advanced cleaning techniques.",
+    text: "The washing service at Laundraville is of high quality, convenient and affordable. Each piece of cloth that is brought to Laundraville will be washed with great care using advanced cleaning techniques. Even if your clothes need a little extra care, like your hand-wash only clothes, we ensure a safe washing process. We also provide the facility of stain removal at your request. We remove stains such as, dirt, ink, wine, grease, grass stains, using the best eco-friendly detergents.",
     animationDelay: baseTimeForDelay,
   },
 
@@ -28,13 +26,11 @@ const serviceCardData = [
       src: dry,
       alt: "Laundry Clothes Drying",
       att: (
-        <a href="https://lovepik.com/images/png-clothes-drying.html">
-          Clothes Drying Png vectors by Lovepik.com
-        </a>
+        <a href="https://lovepik.com/images/png-clothes-drying.html">Clothes Drying Png vectors by Lovepik.com</a>
       ),
     },
     title: "Wrinkly to Straight",
-    text: "We make infinity percent sure that your laundry receive the love and care that you would show them.",
+    text: "We offer an outstanding dry-cleaning service at Laundraville. It is a solvent-based washing process, which utilizes advanced cleaning techniques. Each of the garments brought to us undergoes a thorough expert inspection and ensures safe and high quality clean for your clothes.",
     animationDelay: baseTimeForDelay * 2,
   },
 
@@ -44,13 +40,11 @@ const serviceCardData = [
       src: iron,
       alt: "Woman Ironing CLothes",
       att: (
-        <a href="https://lovepik.com/images/png-clothes-drying.html">
-          Clothes Drying Png vectors by Lovepik.com
-        </a>
+        <a href="https://lovepik.com/images/png-clothes-drying.html">Clothes Drying Png vectors by Lovepik.com</a>
       ),
     },
     title: "Soaked to Dry",
-    text: "We just haven't told people yet but here's a secret...your laundry and us are seeing each other. I think we have enough chemistry to make it work.",
+    text: "The professional ironing service at Laundraville is exceptional and we ensure that you’ll get your clothes as good as new. A highly trained team at Laundravillet is ready to do the very boring, ironing chore for you with the utmost care, giving attention to every detail.",
     animationDelay: baseTimeForDelay * 3,
   },
 
@@ -60,13 +54,11 @@ const serviceCardData = [
       src: sew,
       alt: "sewing CLothes",
       att: (
-        <a href="https://lovepik.com/images/png-clothes-drying.html">
-          Clothes Drying Png vectors by Lovepik.com
-        </a>
+        <a href="https://lovepik.com/images/png-cartoon.html">Cartoon Png vectors by Lovepik.com</a>
       ),
     },
     title: "Mending",
-    text: "We just haven't told people yet but here's a secret...your laundry and us are seeing each other. I think we have enough chemistry to make it work.",
+    text: "Laundraville offers an exceptional sewing service to keep your clothes looking the best on you. The team of expert tailors handle anything from very small repairs to complete alterations, such as hemming dresses and pants, replacing buttons, shortening sleeves, repairing holes etc. ",
     animationDelay: baseTimeForDelay * 4,
   },
 ];
