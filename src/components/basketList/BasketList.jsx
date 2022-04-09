@@ -185,7 +185,7 @@ function BasketList(props) {
         <div className="row px-5">
           <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#pricingModal"
           >

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PricingModal from "../../components/modals/pricingModal/PricingModal";
 
 import Navbar from "./components/Navbar";
+import OrderList from "./components/OrderList";
 import Sidebar from "./components/Sidebar";
 
 import "./styles.css";
@@ -16,7 +17,7 @@ function Dashboard() {
   if (!JSON.parse(localStorage.getItem("loggedIn")))
     window.location.assign("/");
 
-  const [customerState, setCustomerState] = useState({
+  const [customer, setCustomer] = useState({
     id: JSON.parse(localStorage.getItem("customerID")),
     fullName: "",
     dob: "",
@@ -28,7 +29,10 @@ function Dashboard() {
     email: "",
   });
 
-  const [orderSummary, setOrderSummary] = useState({});
+  const [orderSummary, setOrderSummary] = useState({
+    totalDue: 0,
+    orders: [],
+  });
 
   useEffect(() => {
     async function getOrderSummary() {
@@ -43,7 +47,10 @@ function Dashboard() {
             const { status, data } = res;
 
             if (status === 200) {
-              setOrderSummary(data);
+              setOrderSummary({
+                totalDue: data.totalDue,
+                orders: data.orders,
+              });
             }
           });
       }
@@ -51,12 +58,12 @@ function Dashboard() {
 
     async function getCustomerDetails() {
       if (JSON.parse(localStorage.getItem("loggedIn"))) {
-        api.get(`/dashboard/customer/${customerState.id}`).then((res) => {
+        api.get(`/dashboard/customer/${customer.id}`).then((res) => {
           const { status, data } = res;
 
           if (status === 200 && data.statusMessage === "CUSTOMER_FOUND") {
             const { customer } = data;
-            setCustomerState({
+            setCustomer({
               fullName: `${customer.name.firstName} ${customer.name.lastName}`,
               dob: customer.dob,
               addressLine1: customer.address.line1,
@@ -75,11 +82,28 @@ function Dashboard() {
     getCustomerDetails();
   }, []);
 
+  // useEffect(() => {
+  //   console.log(orderSummary);
+  // }, [orderSummary]);
+
   return (
     <div className="position-relative">
-      <Navbar />
-      <Sidebar customer={customerState} />
-      <PricingModal />
+      <div className="container-fluid">
+        <div className="row">
+          <Navbar />
+        </div>
+        <div className="row">
+          <div className="col-3">
+            <Sidebar customer={customer} totalDue={orderSummary.totalDue} />
+            <PricingModal />
+          </div>
+          <div className="col-12 col-md-9">
+            {orderSummary.orders.map((order) => (
+              <OrderList key={order._id} order={order} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

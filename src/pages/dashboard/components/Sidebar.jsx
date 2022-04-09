@@ -8,7 +8,7 @@ function Sidebar(props) {
       <div className="row">
         <div id="sidebar" className="col-md-2 d-none d-md-block glassy dark">
           <div id="left-sidebar">
-            <UserInfoCard customer={props.customer} />
+            <UserInfoCard customer={props.customer} totalDue={props.totalDue} />
           </div>
         </div>
       </div>
