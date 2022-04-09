@@ -2,7 +2,7 @@ import React from "react";
 import "./about.css";
 function About() {
   return (
-    <div className="page-about">
+    <div>
       <h2>About us</h2>
       <div className="paragraph">
         <p className="text0">
@@ -30,9 +30,8 @@ function About() {
           <p>we olways like to help you</p>
           <div className="row">
             <div className="col">
-              {" "}
               <img
-                src="sachith.png"
+                src="../../assets/images/about/sachith.png"
                 className="img-fluid rounded-circle"
                 alt=""
               />
@@ -44,7 +43,7 @@ function About() {
             </div>
             <div className="col">
               <img
-                src="yoshitha.png"
+                src="../../assets/images/about/yoshitha.png"
                 className="img-fluid rounded-circle"
                 alt=""
               />
@@ -56,7 +55,7 @@ function About() {
             </div>
             <div className="col">
               <img
-                src="hiruni.png"
+                src="../../assets/images/about/hiruni.png"
                 className="img-fluid rounded-circle"
                 alt=""
               />
