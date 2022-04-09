@@ -15,6 +15,7 @@ import Login from "./components/customerEntry/login/Login";
 import Services from "./pages/services/Services";
 import Pricing from "./components/pricing/Pricing";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Contact from "./pages/contact/Contact";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -39,6 +40,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </BrowserRouter>
       </div>
