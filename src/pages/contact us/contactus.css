@@ -1,0 +1,10 @@
+h1{
+    margin-left: 100px;
+}
+
+div.cont_form{
+    border: 30px darkgrey;
+    background-color: lightgrey;
+    padding: 50px;
+    margin: 20px;
+}
