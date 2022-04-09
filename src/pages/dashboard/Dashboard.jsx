@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PricingModal from "../../components/modals/pricingModal/PricingModal";
 
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -53,6 +54,7 @@ function Dashboard() {
     <div className="position-relative">
       <Navbar />
       <Sidebar customer={customerState} />
+      <PricingModal />
     </div>
   );
 }

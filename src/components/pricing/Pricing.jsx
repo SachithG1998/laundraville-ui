@@ -7,7 +7,6 @@ import formatCurrency from "../../helpers/formatCurrency";
 import AddToCart from "./components/AddToCart";
 
 import "./Pricing.css";
-import populateBasketItems from "../../helpers/populateBasketItems";
 
 const axios = require("axios").default;
 
@@ -17,43 +16,6 @@ const api = axios.create({
 
 function Pricing() {
   const [services, setServices] = useState([]);
-
-  const [basketItems, setBasketItems] = useState([]);
-
-  useEffect(() => {
-    async function postData() {
-      populateBasketItems(setBasketItems);
-      console.log(basketItems);
-      if (basketItems !== 0) {
-        await api
-          .post(
-            `/basket/saveBasket/${JSON.parse(
-              localStorage.getItem("basketID")
-            )}`,
-            { basketItems: basketItems }
-          )
-          .then((res) => {
-            const { status, data } = res;
-
-            if (status === 200) {
-              if (data.statusMessage === "BASKET_ITEM_ADDED_SUCCESSFULLY") {
-                toast.success(data.message, {
-                  position: "top-right",
-                  autoClose: 500,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
-              }
-            }
-          });
-      }
-    }
-
-    postData();
-  }, [basketItems]);
 
   useEffect(() => {
     async function getData() {
@@ -89,8 +51,8 @@ function Pricing() {
     getData();
   }, []);
 
-  const createBasket = (customerID) => {
-    api
+  const createBasket = async (customerID, addToBasket) => {
+    await api
       .post("/basket/newBasket", {
         customerID: customerID,
         basketDatetime: moment().format(),
@@ -99,7 +61,9 @@ function Pricing() {
         const { status, data } = res;
 
         if (status === 200) {
-          console.log(data);
+          localStorage.setItem("basketID", JSON.stringify(data.basketID));
+          console.log("saved");
+          addToBasket(data);
         }
       });
   };
@@ -130,8 +94,6 @@ function Pricing() {
                   <AddToCart
                     api={api}
                     service={service}
-                    basketItems={basketItems}
-                    setBasketItems={setBasketItems}
                     createBasket={createBasket}
                   />
                 ) : (

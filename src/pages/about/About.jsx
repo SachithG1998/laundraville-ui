@@ -19,9 +19,10 @@ function About() {
           day deliver to your door step in your delivery schedule. Our customer
           service employees ensure you face no difficulty. Customer’s every item
           we clean is treated with care and respect by our highly experienced
-          team of experts who provides world class cleaning service, every time.
-          We are working hard to earn your trust and It’s our pleasure to keep
-          our customers satisfied with our quality & 100% happiness services
+          team of experts who provides world className cleaning service, every
+          time. We are working hard to earn your trust and It’s our pleasure to
+          keep our customers satisfied with our quality & 100% happiness
+          services
         </p>
         <div className="container-fluid">
           <h1>meet our team..</h1>

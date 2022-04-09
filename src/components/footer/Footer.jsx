@@ -17,7 +17,7 @@ function Footer() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <i class={`${social.icon} fa-lg`} />
+                  <i className={`${social.icon} fa-lg`} />
                 </a>
               </div>
             );

@@ -20,7 +20,7 @@ function Basket() {
   return (
     <div className="p-4">
       <i
-        class="position-relative fa-solid fa-basket-shopping fa-2xl"
+        className="position-relative fa-solid fa-basket-shopping fa-2xl"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#basketList"
@@ -29,7 +29,7 @@ function Basket() {
         {basketItemCount > 0 ? (
           <span
             id="basket-badge"
-            class="position-absolute translate-middle badge rounded-pill bg-danger"
+            className="position-absolute translate-middle badge rounded-pill bg-danger"
           >
             {formatBasketItemCount()}
           </span>

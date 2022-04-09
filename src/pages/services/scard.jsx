@@ -13,7 +13,7 @@ function Servicecards() {
         {serviceCardData.map((SCard) => {
           return (
             <div key={SCard.id} className="row g-0 text-white text-center">
-              <div class="col-md-4" id="pic">
+              <div className="col-md-4" id="pic">
                 <Card cardImage={SCard.image} />
               </div>
 
