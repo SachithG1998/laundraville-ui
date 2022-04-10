@@ -82,10 +82,6 @@ function Dashboard() {
     getCustomerDetails();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(orderSummary);
-  // }, [orderSummary]);
-
   return (
     <div className="position-relative">
       <div className="container-fluid">

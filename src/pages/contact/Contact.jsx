@@ -13,21 +13,17 @@ const api = axios.create({
 });
 
 function Contact() {
-
   const [customer, setCustomer] = useState({
     firstName: "",
     message: "",
     email: "",
-
   });
-
 
   const validationSchema = Joi.object({
     firstName: Joi.string().min(2).required(),
     email: Joi.string().required(),
     message: Joi.string().required(),
   });
-
 
   const handleInputValues = (event) => {
     const target = event.target;
@@ -65,13 +61,13 @@ function Contact() {
   };
 
   const sendEmail = () => {
-    window.location.href = `mailto:laundreavillelaundry@gmail.com?subject=Inquiry%20by%20${encodeURI(customer.email)}&body=${encodeURI(customer.message)}`;
-    console.log(customer.email);
-  }
+    window.location.href = `mailto:laundreavillelaundry@gmail.com?subject=Inquiry%20by%20${encodeURI(
+      customer.email
+    )}&body=${encodeURI(customer.message)}`;
+  };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
 
     if (validateForm()) {
       sendEmail();
@@ -117,7 +113,8 @@ function Contact() {
                   <i class="fa fa-envelope"></i>
                   <a
                     href="mailto:laundravillelaundry@gmail.com? Subject=Welcometo%20laundraville"
-                    target="_top">
+                    target="_top"
+                  >
                     laundravillelaundry@gmail.com
                   </a>
                 </div>
@@ -166,7 +163,8 @@ function Contact() {
               <button
                 type="submit"
                 name="Sendmessage"
-                className="btn btn-primary mb-3">
+                className="btn btn-primary mb-3"
+              >
                 Send Message
               </button>
             </div>

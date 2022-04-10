@@ -3,7 +3,6 @@ import React from "react";
 import logout from "../../../helpers/logout";
 
 function UserInfoCard(props) {
-  console.log(props);
   return (
     <div className="container text-center mt-5 d-d-inline-flex">
       <div className="card p-3 glassy light rounded-corners">

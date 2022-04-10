@@ -62,7 +62,6 @@ function Pricing() {
 
         if (status === 200) {
           localStorage.setItem("basketID", JSON.stringify(data.basketID));
-          console.log("saved");
           addToBasket(data);
         }
       });
