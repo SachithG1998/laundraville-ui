@@ -93,38 +93,38 @@ body {
 }
 
 .form-v10-content .form-detail .form-groupped {
-    font-size: small;
+    font-size: 13px;
     color: aliceblue;
     text-align: justify;
 }
 
-.form-v10-content .form-detail .form-left .form-group .form-row.form-row-1 {
+.form-v10-content .form-detail .form-left1 .form-group .form-row.form-row-1 {
     width: 50%;
     padding: 0 12px 0 60px;
 }
 
-.form-v10-content .form-detail .form-left .form-group .form-row.form-row-2 {
+.form-v10-content .form-detail .form-left1 .form-group .form-row.form-row-2 {
     width: 50%;
     padding: 0 50px 0 12px;
 }
 
-.form-v10-content .form-detail .form-left .form-group .form-row.form-row-3 {
+.form-v10-content .form-detail .form-left1 .form-group .form-row.form-row-3 {
     width: 73%;
     padding: 0 12px 0 60px;
 }
 
-.form-v10-content .form-detail .form-left .form-group .form-row.form-row-4 {
+.form-v10-content .form-detail .form-left1 .form-group .form-row.form-row-4 {
     width: 50%;
     padding: 0 50px 0 12px;
 }
 
-.form-v10-content .form-detail .form-right .form-group .form-row.form-row-1 {
-    width: 60%;
+.form-v10-content .form-detail .form-left1 .form-group .form-row .form-row-1 {
+    width: 40%;
     padding: 0 12px 0 60px;
 }
 
-.form-v10-content .form-detail .form-right .form-group .form-row.form-row-2 {
-    width: 40%;
+.form-v10-content .form-detail .form-left1 .form-group .form-row .form-row-2 {
+    width: 60%;
     padding: 0 50px 0 12px;
 }
 
