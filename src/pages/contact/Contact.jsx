@@ -12,62 +12,34 @@ const api = axios.create({
   baseURL: "http://localhost:3000/api",
 });
 
-function SignUp() {
-  /* Defining a customer state and setCustomer hook*/
+function Contact() {
+
   const [customer, setCustomer] = useState({
     firstName: "",
-    lastName: "",
-    dob: "",
-    addressLine1: "",
-    addressLine2: "",
-    postalCity: "",
-    district: "",
-    phone: "",
+    message: "",
     email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
+
   });
 
-  /* Formatting current date to match date picker format */
-  let date = moment();
-  date = date.subtract(18, "y").format("MM/DD/YYYY");
 
-  /* Validation schema for signup form */
   const validationSchema = Joi.object({
     firstName: Joi.string().min(2).required(),
-    lastName: Joi.string().optional().allow("").min(2),
-    dob: Joi.date().max(date).required(),
-    addressLine1: Joi.string().optional().allow(""),
-    addressLine2: Joi.string().optional().allow(""),
-    postalCity: Joi.string().optional().allow(""),
-    district: Joi.string().optional().allow(""),
-    phone: Joi.number().required(),
     email: Joi.string().required(),
-    username: Joi.string().required(),
-    password: Joi.string().min(8).max(16).required(),
-    confirmPassword: Joi.ref("password"),
+    message: Joi.string().required(),
   });
 
-  /* Manually update input value */
+
   const handleInputValues = (event) => {
     const target = event.target;
 
     const name = target.name;
     let value = target.value;
 
-    // formatting if dob field is recieved
-    if (name === "dob") {
-      value = moment(value).format("YYYY-MM-DD");
-      console.log(value);
-    }
-
     setCustomer((prevState) => {
       return { ...prevState, ...{ [name]: value } };
     });
   };
 
-  /* Validates input values with comparison to the Joi validation schema */
   const validateForm = () => {
     const result = validationSchema.validate(customer);
 
@@ -92,33 +64,17 @@ function SignUp() {
     }
   };
 
-  const registerCustomer = async () => {
-    await api
-      .post("/customer/register", customer)
-      .then((res) => {
-        const { status, data } = res;
+  const sendEmail = () => {
+    window.location.href = `mailto:laundreavillelaundry@gmail.com?subject=Inquiry%20by%20${encodeURI(customer.email)}&body=${encodeURI(customer.message)}`;
+    console.log(customer.email);
+  }
 
-        if (status === 200) {
-          toast.success(data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch((error) => console.log(error));
-  };
-
-  /* Function to handle on submit event */
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
+
     if (validateForm()) {
-      registerCustomer();
+      sendEmail();
     }
   };
 
@@ -143,7 +99,7 @@ function SignUp() {
 
               <div className="form-group">
                 <div className="form-row form-row-1">Location :</div>
-                <div className="form-row form-row-1">
+                <div className="form-row form-row-2">
                   <i class="fa a-map-marker"></i>
                   <a
                     href="https://goo.gl/maps/ozkvCeZjaJkjMZXJ9"
@@ -157,12 +113,11 @@ function SignUp() {
 
               <div className="form-group">
                 <div className="form-row form-row-1">Send a Email :</div>
-                <div className="form-row form-row-1">
+                <div className="form-row form-row-2">
                   <i class="fa fa-envelope"></i>
                   <a
                     href="mailto:laundravillelaundry@gmail.com? Subject=Welcometo%20laundraville"
-                    target="_top"
-                  >
+                    target="_top">
                     laundravillelaundry@gmail.com
                   </a>
                 </div>
@@ -197,7 +152,7 @@ function SignUp() {
 
             <div className="form-row">
               <input
-                type="textarea"
+                type="text"
                 name="message"
                 className="message"
                 id="message"
@@ -211,8 +166,7 @@ function SignUp() {
               <button
                 type="submit"
                 name="Sendmessage"
-                className="btn btn-primary mb-3"
-              >
+                className="btn btn-primary mb-3">
                 Send Message
               </button>
             </div>
@@ -223,4 +177,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Contact;
