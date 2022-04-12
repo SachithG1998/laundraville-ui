@@ -108,6 +108,7 @@ function AddToCart(props) {
             name="quantity"
             className="form-control text-center input-number w-25 mx-2 border-1"
             value={quantity}
+            readOnly={true}
           />
           <span
             className="input-group-btn d-flex justify-content-center align-items-center p-1"
