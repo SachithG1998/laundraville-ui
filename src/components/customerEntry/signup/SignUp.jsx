@@ -85,6 +85,7 @@ function SignUp() {
 
       return false;
     } else {
+      resetRegisterForm();
       return true;
     }
   };
