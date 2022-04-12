@@ -90,7 +90,7 @@ function AddToCart(props) {
   };
 
   return (
-    <div className="row">
+    <div key={props.service._id} className="row">
       <div className="col-10">
         <div className="input-group">
           <span
